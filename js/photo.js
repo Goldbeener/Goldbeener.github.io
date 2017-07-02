@@ -1,5 +1,5 @@
-define([],function(){
-    return {
+//define([],function(){
+    module.exports = {
         page: 1,
         offset: 20,
         init: function(){
@@ -41,4 +41,4 @@ define([],function(){
             })
         }
     }
-});
+//});
