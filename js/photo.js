@@ -1,4 +1,4 @@
-define([],function(){
+(function(){
     return {
         page: 1,
         offset: 20,
@@ -41,4 +41,4 @@ define([],function(){
             })
         }
     }
-})
+})();
