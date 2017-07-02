@@ -1,4 +1,4 @@
-(function(){
+define([],function(){
     return {
         page: 1,
         offset: 20,
@@ -23,7 +23,7 @@
             }
 
             $(".img-box-ul").append(li);
-            //$(".img-box-ul").lazyload();
+            $(".img-box-ul").lazyload();
             $("a[rel=example_group]").fancybox();
         },
         scroll: function(data){
@@ -41,4 +41,4 @@
             })
         }
     }
-})();
+});
