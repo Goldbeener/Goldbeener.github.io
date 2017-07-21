@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/phoneca.png">
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/sslset.jpeg">
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/mac环境下使用charles抓包/httpsreq.jpeg">
-<meta property="og:updated_time" content="2017-07-21T09:50:10.000Z">
+<meta property="og:updated_time" content="2017-07-21T09:55:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac环境下使用charles抓包">
 <meta name="twitter:description" content="抓包就是抓取客户端和服务器之间的网络通信数据包，获取完整的前后端通信信息。通过抓包可以快速定位问题，提高接口联调的效率；还可以查看部分网站的实现思路（源码），启发教育。">
@@ -199,17 +199,21 @@
 <p>这样就完成破解了。现在就可以使用charles抓包了。<br>首先它也支持浏览器抓包，<br>打开charles，确认Proxy&gt;Mac OS X Proxy是选中状态，这样就可以抓取浏览器的数据请求包了。<br>如图：<br><img src="/2017/07/20/mac环境下使用charles抓包/browserScreen.jpeg" alt="browser screen"><br>目前理论上是可以抓取正常的http请求的数据包，如果http响应报文里面出现乱码，需要在charles安装包配置文件里面修改一下配置，在Contents目录下的info.plist，打开文件找到VMOptions,在string标签值后面添加-Dfile.encoding=UTF-8即可。<br><img src="/2017/07/20/mac环境下使用charles抓包/utf.jpeg" alt="http luanma config"></p>
 <p>如果是https请求响应里面有乱码，那么可能是因为charles的证书有问题，可以点击工具栏Help &gt; Install Charles CA SSL Certificate;安装证书，再添加信任。<br><img src="/2017/07/20/mac环境下使用charles抓包/addca.jpeg" alt="click to install ca"><br><img src="/2017/07/20/mac环境下使用charles抓包/trust.jpeg" alt="trust ca"></p>
 <p>以上主要是在PC端使用charles抓包，Charles关键技能还是在移动APP上的抓包。<br>移动APP也可以分为http包和https包。</p>
-<p><strong>http抓包</strong>     </p>
+<p><strong>http抓包</strong>  </p>
 <ol>
 <li>测试手机电脑连接在同一个局域网， </li>
 <li>查看电脑IP，</li>
 <li>设置手机网络代理，代理服务器地址就是电脑的IP，端口一般是8888，端口可以在charles &gt; Proxy &gt; Proxy setting 下设置。</li>
-<li>手机正常请求，charles会弹出是否允许的提示框，点击“Allow”即可抓取http请求报文。<br><img src="/2017/07/20/mac环境下使用charles抓包/macip.png" alt="check mac&#39;s ip"><br><img src="/2017/07/20/mac环境下使用charles抓包/setproxy.png" alt="set phone proxy"><br><img src="/2017/07/20/mac环境下使用charles抓包/allow.png" alt="allow phone connet"><br><img src="mac环境下使用charles抓包/httpreq.png" alt="show the result"></li>
+<li>手机正常请求，charles会弹出是否允许的提示框，点击“Allow”即可抓取http请求报文。</li>
 </ol>
+<p><img src="/2017/07/20/mac环境下使用charles抓包/macip.png" alt="check mac&#39;s ip"></p>
+<p><img src="/2017/07/20/mac环境下使用charles抓包/setproxy.png" alt="set phone proxy"></p>
+<p><img src="/2017/07/20/mac环境下使用charles抓包/allow.png" alt="allow phone connet"></p>
+<p><img src="mac环境下使用charles抓包/httpreq.png" alt="show the result"></p>
 <p><strong>https抓包</strong><br>http抓包也需要http抓包的那四个步骤，但是还需要额外的配置。 </p>
 <ol>
 <li>在测试机上安装证书，在safari浏览器上直接打开<a href="https://www.charlesproxy.com/assets/legacy-ssl/charles.crt，下载证书安装即可。" target="_blank" rel="external">https://www.charlesproxy.com/assets/legacy-ssl/charles.crt，下载证书安装即可。</a><br><img src="/2017/07/20/mac环境下使用charles抓包/phoneca.png" alt="install phone ca"> </li>
-<li>需要在Charles &gt; Proxy &gt; Proxy setting &gt; SSL 下勾选”Enable SSL Proxying”,并且配置需要抓包的域名，端口设置为443.<br><img src="/2017/07/20/mac环境下使用charles抓包/sslset.jpeg" alt="https ssl setting"></li>
+<li>需要在Charles &gt; Proxy &gt; Proxy setting &gt; SSL 下勾选”Enable SSL Proxying”,并且配置需要抓包的域名，端口设置为443.(域名可以设置通配符，不过这时候所有的请求都会被抓包，数据量过大，一般指定目标域名)<br><img src="/2017/07/20/mac环境下使用charles抓包/sslset.jpeg" alt="https ssl setting"></li>
 </ol>
 <p>这样就可以实现https请求抓包了。<br><img src="mac环境下使用charles抓包/httpsreq.jpeg" alt="https req result"></p>
 <p>That’s all.</p>
@@ -458,22 +462,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -486,7 +474,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +490,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
             
             <div class="clearfix"></div>
