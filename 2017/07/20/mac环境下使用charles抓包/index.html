@@ -20,7 +20,9 @@
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/change.png">
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/browserScreen.jpeg">
 <meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/utf.jpeg">
-<meta property="og:updated_time" content="2017-07-21T05:41:54.000Z">
+<meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/addca.jpeg">
+<meta property="og:image" content="http://goldbeener.top/2017/07/20/mac环境下使用charles抓包/trust.jpeg">
+<meta property="og:updated_time" content="2017-07-21T09:23:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac环境下使用charles抓包">
 <meta name="twitter:description" content="抓包就是抓取客户端和服务器之间的网络通信数据包，获取完整的前后端通信信息。通过抓包可以快速定位问题，提高接口联调的效率；还可以查看部分网站的实现思路（源码），启发教育。">
@@ -187,7 +189,8 @@
 <p>常用的抓包方式:   </p>
 <p>pc端的日常抓包可以使用chrome浏览器自带的F12开发者工具完成，直接点击查看开发者工具选项里面的network项，里面对于网站的所需要的资源请求都有记录，需要哪一条都可以点击查看。如下图：<br><img src="/2017/07/20/mac环境下使用charles抓包/chrome.jpeg" alt="chrome debug"></p>
 <p>移动端app抓包就需要借助工具了，windows下常用的是fidder，mac下我选择的是charles。<br>首先安装charles，charles是付费软件，需要破解。<br>破解的方式也很简单，安装好之后，搜索对应版本的破解包，就是一个charles.jar包，然后替换掉安装包里面的同名文件就可以了。（文末附3.8.3版本破解包）<br>具体步骤如下：<br>找到安装包里的原charles.jar包<br><img src="/2017/07/20/mac环境下使用charles抓包/search.png" alt="find original Charles.jar"><br><img src="/2017/07/20/mac环境下使用charles抓包/change.png" alt="change charles.jar">   </p>
-<p>这样就完成破解了。现在就可以使用charles抓包了。<br>首先它也支持浏览器抓包，<br>打开charles，确认Proxy&gt;Mac OS X Proxy是选中状态，这样就可以抓取浏览器的数据请求包了。<br>如图：<br><img src="/2017/07/20/mac环境下使用charles抓包/browserScreen.jpeg" alt="browser screen"><br>目前理论上是可以抓取正常的http请求的数据包，如果http响应报文里面出现乱码，需要在charles安装包配置文件里面修改一下配置，在Contents目录下的info.plist，打开文件找到VMOptions,在string标签值后面添加-Dfile.encoding=UTF-8即可。<br><img src="/2017/07/20/mac环境下使用charles抓包/utf.jpeg" alt="http luanma config">     </p>
+<p>这样就完成破解了。现在就可以使用charles抓包了。<br>首先它也支持浏览器抓包，<br>打开charles，确认Proxy&gt;Mac OS X Proxy是选中状态，这样就可以抓取浏览器的数据请求包了。<br>如图：<br><img src="/2017/07/20/mac环境下使用charles抓包/browserScreen.jpeg" alt="browser screen"><br>目前理论上是可以抓取正常的http请求的数据包，如果http响应报文里面出现乱码，需要在charles安装包配置文件里面修改一下配置，在Contents目录下的info.plist，打开文件找到VMOptions,在string标签值后面添加-Dfile.encoding=UTF-8即可。<br><img src="/2017/07/20/mac环境下使用charles抓包/utf.jpeg" alt="http luanma config"></p>
+<p>如果是https请求响应里面有乱码，那么可能是因为charles的证书有问题，可以点击工具栏Help &gt; Install Charles CA SSL Certificate;安装证书，再添加信任。<br><img src="/2017/07/20/mac环境下使用charles抓包/addca.jpeg" alt="click to install ca"><br><img src="/2017/07/20/mac环境下使用charles抓包/trust.jpeg" alt="trust ca"></p>
 
       
 
@@ -425,14 +428,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -445,11 +440,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,15 +460,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
             
             <div class="clearfix"></div>
