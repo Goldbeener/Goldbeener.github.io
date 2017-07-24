@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>对象拷贝 | Sean&#39;s Blog</title>
+  <title>Archives | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="js的对象、数组等引用类型的数据，在拷贝的过程中会产生引用问题，比如：12345678910111213var arr = [1,2,3];var arr1 = arr;arr1[0] = 0;console.log(arr);       // [0,2,3]console.log(arr1);      // [0,2,3]var obj = &amp;#123;name: &apos;Sean&apos;&amp;#125;;">
-<meta name="keywords" content="js,深拷贝">
-<meta property="og:type" content="article">
-<meta property="og:title" content="对象拷贝">
-<meta property="og:url" content="http://goldbeener.top/2017/05/23/对象拷贝/index.html">
+  <meta name="description" content="This is my personal blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sean&#39;s Blog">
+<meta property="og:url" content="http://goldbeener.top/archives/page/2/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="js的对象、数组等引用类型的数据，在拷贝的过程中会产生引用问题，比如：12345678910111213var arr = [1,2,3];var arr1 = arr;arr1[0] = 0;console.log(arr);       // [0,2,3]console.log(arr1);      // [0,2,3]var obj = &amp;#123;name: &apos;Sean&apos;&amp;#125;;">
-<meta property="og:updated_time" content="2017-06-01T14:14:22.000Z">
+<meta property="og:description" content="This is my personal blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="对象拷贝">
-<meta name="twitter:description" content="js的对象、数组等引用类型的数据，在拷贝的过程中会产生引用问题，比如：12345678910111213var arr = [1,2,3];var arr1 = arr;arr1[0] = 0;console.log(arr);       // [0,2,3]console.log(arr1);      // [0,2,3]var obj = &amp;#123;name: &apos;Sean&apos;&amp;#125;;">
+<meta name="twitter:title" content="Sean&#39;s Blog">
+<meta name="twitter:description" content="This is my personal blog">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -156,194 +154,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-对象拷贝" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      对象拷贝
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/08/publish-new-atticle/" class="archive-article-date">
+  	<time datetime="2017-05-08T06:22:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/05/08/publish-new-atticle/">publish new article</a>
     </h1>
   
 
-        
-        <a href="/2017/05/23/对象拷贝/" class="archive-article-date">
-  	<time datetime="2017-05-23T03:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>js的对象、数组等引用类型的数据，在拷贝的过程中会产生引用问题，比如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> arr1 = arr;</div><div class="line">arr1[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr);       <span class="comment">// [0,2,3]</span></div><div class="line"><span class="built_in">console</span>.log(arr1);      <span class="comment">// [0,2,3]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Sean'</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj1 = obj;</div><div class="line">obj1.name = <span class="string">'Jane'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj);     <span class="comment">//&#123;name: 'Jane'&#125;</span></div><div class="line"><span class="built_in">console</span>.log(obj1);      <span class="comment">//&#123;name: 'Jane'&#125;</span></div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>要解决这个问题，可以使用for循环，逐个赋值，但是这比较low，与这个高逼格的时代格格不入。<br>对于数组来说，可以使用concat、slice等方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> arr1 = arr.concat();</div><div class="line">    arr1.unshift(<span class="number">0</span>);</div><div class="line">    arr1[<span class="number">2</span>] = <span class="string">'change'</span>;</div><div class="line"><span class="keyword">var</span> arr2 = arr.slice(<span class="number">0</span>);</div><div class="line">    arr2.push(<span class="number">4</span>);</div><div class="line">    arr2[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arr);       <span class="comment">//[1, 2, 3]</span></div><div class="line"><span class="built_in">console</span>.log(arr1);      <span class="comment">//[0, 1, "change", 3]</span></div><div class="line"><span class="built_in">console</span>.log(arr2);      <span class="comment">//[0, 2, 3, 4]</span></div></pre></td></tr></table></figure></p>
-<p>这两张方式，都是复制原数组的值创建了一个新的数组，不是引用原数组。<br>但是，这两种方式在下面这种情况下，就有问题了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item3'</span>&#125;</div><div class="line">          ];</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr1 = arr.concat();</div><div class="line">    arr1[<span class="number">0</span>].name = <span class="string">'first'</span>;</div><div class="line"><span class="keyword">var</span> arr2 = arr.slice(<span class="number">0</span>);</div><div class="line">    arr2[<span class="number">2</span>].name = <span class="string">'last'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr1,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr2,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"></div><div class="line"><span class="comment">/*以上三个输出全是一样的</span></div><div class="line">[</div><div class="line">    &#123;name: 'first'&#125;,</div><div class="line">    &#123;name: 'item2'&#125;,</div><div class="line">    &#123;name: 'last'&#125;,</div><div class="line">]</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<p>通过以上对比发现，当数组各项是基本数据类型时，concat、slice方法是复制了数组各项； 创建新的数组；<br>如果数组各项是引用数据类型时，concat、slice方法是复制了各项的引用，来创建新的数组，新数组的每一项与原数组的对应项还是指向同一个对象的引用。这种情况下，如果对原数组也存在的项做了修改，那么原数组也会体现出来（如上例）；如果不修改原数组也存在的项，只是对新数组添加或者删除项，则原数组不会受到影响。（如下例）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item3'</span>&#125;</div><div class="line">          ];</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr1 = arr.concat();</div><div class="line">    arr1.push(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'add'</span></div><div class="line">    &#125;);</div><div class="line"><span class="keyword">var</span> arr2 = arr.slice();</div><div class="line">    arr2.shift();</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr1,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr2,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"></div><div class="line"><span class="comment">/*以上三个输出分别是：</span></div><div class="line"> arr ===&gt;  [</div><div class="line">                &#123;</div><div class="line">                    "name": "item1"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "item2"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "item3"</div><div class="line">                &#125;</div><div class="line">           ]</div><div class="line">arr2 ===&gt;  [</div><div class="line">                &#123;</div><div class="line">                    "name": "item1"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "item2"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "item3"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "add"</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">arr2 ===&gt;   [</div><div class="line">                &#123;</div><div class="line">                    "name": "item2"</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    "name": "item3"</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<p>如果要想实现纯粹的复制，避免以上的问题，那就是深拷贝的实现。<br>可以使用对象序列化的方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'item3'</span>&#125;</div><div class="line">          ];</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(arr));</div><div class="line">arr1[<span class="number">0</span>].name = <span class="string">'first'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(arr1,<span class="literal">null</span>,<span class="number">2</span>)); </div><div class="line"><span class="comment">/*</span></div><div class="line">    以上输出分别是：</div><div class="line">arr ---&gt; [</div><div class="line">            &#123;name: 'item1'&#125;,</div><div class="line">            &#123;name: 'item2'&#125;,</div><div class="line">            &#123;name: 'item3'&#125;</div><div class="line">         ];</div><div class="line">arr1---&gt; [</div><div class="line">            &#123;name: 'first'&#125;,</div><div class="line">            &#123;name: 'item2'&#125;,</div><div class="line">            &#123;name: 'item3'&#125;</div><div class="line">         ];</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<p>这样就可以简单的达到深拷贝的目的。</p>
-<p>对于对象来说，es6中有一个新的方法Object.assign(target,ob1,obj2…);<br>该方法是用作将源对象的所有可枚举属性复制到目标对象。<br>可以用它来实现对象的浅拷贝<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">'Sean'</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj1 = <span class="built_in">Object</span>.assign(&#123;&#125;,obj);</div><div class="line">    obj1.name = <span class="string">'Jane'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj,<span class="literal">null</span>,<span class="number">2</span>));     <span class="comment">// &#123;name: 'Sean'&#125;</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj1,<span class="literal">null</span>,<span class="number">2</span>));    <span class="comment">//&#123;name: 'Jane'&#125;</span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">同样的，这种方法对于二维的对象复制也会出现问题：    </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Sean'</span>,</div><div class="line">            <span class="attr">family</span>: &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'Jane'</span></div><div class="line">            &#125;</div><div class="line">          &#125;;</div><div class="line"><span class="keyword">var</span> obj1 = <span class="built_in">Object</span>.assign(&#123;&#125;,obj);</div><div class="line">    obj1.family.name = <span class="string">'Jane Lee'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj,<span class="literal">null</span>,<span class="number">2</span>));    </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj1,<span class="literal">null</span>,<span class="number">2</span>));</div><div class="line"><span class="comment">/*</span></div><div class="line">    以上输出都是</div><div class="line">    &#123;</div><div class="line">        "name": "Sean",</div><div class="line">        "family": &#123;</div><div class="line">            "name": "Jane Lee"</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<p>要想对对象实现深拷贝，同样的也可以使用对象序列化方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Sean'</span>,</div><div class="line">            <span class="attr">family</span>: &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'Jane'</span></div><div class="line">            &#125;</div><div class="line">          &#125;;</div><div class="line"><span class="keyword">var</span> obj1 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj));</div><div class="line">    obj1.family.name = <span class="string">'Jane Lee'</span>;  </div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj,<span class="literal">null</span>,<span class="number">2</span>));    </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj1,<span class="literal">null</span>,<span class="number">2</span>));  </div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">    以上输出分别是：</div><div class="line">obj ---&gt;  &#123;</div><div class="line">            "name": "Sean",</div><div class="line">            "family": &#123;</div><div class="line">               "name": "Jane"</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">obj1 ---&gt; &#123;</div><div class="line">            "name": "Sean",</div><div class="line">            "family": &#123;</div><div class="line">               "name": "Jane Lee"</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<p>以上，json序列化的方法可以基本实现数组、对象的深拷贝，但是这仅限于是多维的属性值为基本类型的对象，对于属性值RegExp、Function类型的数据无法实现，并且也不支持对象循环引用。<br>目前有专门的库来实现对象的深拷贝，比如lodash库。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>很高兴能对你有所帮助<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/ali.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">深拷贝</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hexo 教程</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2017/05/23/对象拷贝/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/06/07/博客页嵌入jsFiddle/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          博客页嵌入jsFiddle
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/05/22/deployblog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo + github 个人博客搭建</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-<script>
-var cloudTieConfig = {
-  url: document.location.href, 
-  sourceId: "",
-  productKey: "7ecedb0874754791b2a37433c1ae48d4",
-  target: "cloud-tie-wrapper"
-};
-var yunManualLoad = true;
-Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
-</script>
+    </div></section>
   
 
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -367,8 +234,8 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

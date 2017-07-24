@@ -156,6 +156,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-实现斐波那契数列的几种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/24/js-实现斐波那契数列的几种方法/">js 实现斐波那契数列的几种方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/24/js-实现斐波那契数列的几种方法/" class="archive-article-date">
+  	<time datetime="2017-07-24T08:42:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>以数组形式输出指定个数的斐波那契数    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fab</span>(<span class="params">count</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">0</span>,</div><div class="line">        b = <span class="number">1</span>,</div><div class="line">        arr = [<span class="number">0</span>,<span class="number">1</span>],</div><div class="line">        cur;</div><div class="line">    <span class="keyword">while</span>(arr.length &lt; count)&#123;</div><div class="line">        cur = a + b;</div><div class="line">        arr.push(cur);</div><div class="line">        a = b;</div><div class="line">        b = cur;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div><div class="line"><span class="comment">//output </span></div><div class="line"><span class="comment">//fab(5) [0,1,1,2,3]</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>输出单个项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fab</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">0</span>,</div><div class="line">        b = <span class="number">1</span>,</div><div class="line">        cur;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">gen</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        cur = a;</div><div class="line">        a = b;</div><div class="line">        b = cur + b;</div><div class="line">        <span class="keyword">return</span> cur;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> gen;</div><div class="line">&#125;</div><div class="line"><span class="comment">//output  多次执行 需要借助for循环，需要时第几项循环几次</span></div><div class="line"><span class="comment">//var item = fab();</span></div><div class="line"><span class="comment">//item() 0</span></div><div class="line"><span class="comment">//item() 1</span></div><div class="line"><span class="comment">//item() 1</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>es6 generate实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">fab</span>(<span class="params">max</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">0</span>,</div><div class="line">        b = <span class="number">1</span>,</div><div class="line">        count = <span class="number">0</span>,</div><div class="line">        t;</div><div class="line">    <span class="keyword">while</span>(count &lt; max)&#123;</div><div class="line">        <span class="keyword">yield</span> a;</div><div class="line">        t = a + b;</div><div class="line">        a = b;</div><div class="line">        b = t;</div><div class="line">        count ++;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> item = fab(<span class="number">5</span>);</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> x <span class="keyword">of</span> item)&#123;</div><div class="line">    <span class="built_in">console</span>.log(x);     <span class="comment">//依次输出0,1,1,2,3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/24/js-实现斐波那契数列的几种方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-mac环境下使用charles抓包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -705,66 +774,10 @@
 
 
   
-    <article id="post-publish-new-atticle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/08/publish-new-atticle/">publish new article</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/08/publish-new-atticle/" class="archive-article-date">
-  	<time datetime="2017-05-08T06:22:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用hexo新建一篇文章，命令行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">'article-name'</span></div></pre></td></tr></table></figure></p>
-<p>这样就在source/_posts目录下新建了一个以’article-name’为标题的md文档，就在这里面进行文章书写。  </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hexo 教程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/08/publish-new-atticle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -875,6 +888,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -884,10 +901,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抓包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
