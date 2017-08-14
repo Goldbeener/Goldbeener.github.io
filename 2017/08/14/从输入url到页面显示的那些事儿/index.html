@@ -16,7 +16,9 @@
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="传说中的面试必问题，总结整理了一下，算是对整个请求链路的一次梳理。话不多说，先上图。">
 <meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/url.jpg">
-<meta property="og:updated_time" content="2017-08-14T05:45:27.000Z">
+<meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/digui.png">
+<meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/diedai.png">
+<meta property="og:updated_time" content="2017-08-14T07:10:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从输入url到页面显示的那些事儿">
 <meta name="twitter:description" content="传说中的面试必问题，总结整理了一下，算是对整个请求链路的一次梳理。话不多说，先上图。">
@@ -181,6 +183,16 @@
         <p>传说中的面试必问题，总结整理了一下，算是对整个请求链路的一次梳理。<br>话不多说，先上图。</p>
 <a id="more"></a>
 <p><img src="/2017/08/14/从输入url到页面显示的那些事儿/url.jpg" alt="url router"></p>
+<ol>
+<li>在浏览器输入url过程中，已经开始搞事情了。<br>浏览器会根据已输入的内容在缓存中做模糊匹配，列出可能要访问的网址；<br>如果是以前访问过的，那么直接会在浏览器内存里面做dns解析；并且某些机智浏览器如果缓存过目标页面内容，会直接把缓存页加载出来。     </li>
+<li>dns解析<br>dns的本质是一个域名与对ip地址映射的数据库，dns解析就是完成从url到ip地址的转换。<br>解析遵循的是缓存优先加载的原则，缓存查找顺序为：Browser cache &gt; OS cache &gt; Router cache &gt; ISP DNS cache ;<br>缓存查找不到的话，会向各级域名服务器查找，查找策略有递归解析和迭代解析。<br><img src="/2017/08/14/从输入url到页面显示的那些事儿/digui.png" alt="digui demo"><br>如图，递归解析的过程是，客户端向本地服务器询问，本地服务器可以完成解析的话就直接返回；如果不行的话就一层层向上询问，知道问出结果，再一层层返回给客户端。<br><img src="/2017/08/14/从输入url到页面显示的那些事儿/diedai.png" alt="diedai demo"><br>如图，迭代解析的过程是，客户端向本地服务器查询，本地服务器不知道，但是返回了一个可能知道的服务器的地址，客户端再去向该服务器询问；该服务器知道就返回，不知道的话再提供一个可能知道的服务器的地址供客户端再次询问…直到完成解析。<br>这里需要了解一些关于域名的知识，根域（.），顶级域（.com/.cn/.org）,二级域（baidu.com/netease.com）,三级域（www.baidu.com）。<br>dns解析过程中可能伴随着了负载均衡的第一步，根据所在地区、网络提供商、算法等情况，返回的ip地址可能是不一样的，这样把访问分配到不同的入口，以期让你在最短的时间内得到响应。    </li>
+<li>tcp连接<br>知道了目标ip地址，那么需要与目标建立tcp连接。<br>建立tcp连接需要经过三次握手。<br>断开tcp需要经过四次挥手。    </li>
+<li>发送http请求报文<br>建立连接之后，浏览器回组装http请求报文，<br>经过七层链路中的层层报文封装，最终发向目标服务器。     </li>
+<li>负载均衡器<br>这个地方的负载均衡策略，一般是反向代理实现的。<br>发送的请求经过代理器转发http请求，向源服务器获取资源，再返回给客户端。    </li>
+<li>服务器接收到请求<br>服务器接收到请求，首先会经过层层拆包，取到http报文。<br>如果发生了重定向（301/302），那么会在响应报文的location字段里面附上资源新的地址；这样客户端会自动再次发送请求；<br>到达了正确的服务器之后，服务器会根据请求的内容区别处理，如果是静态资源，那么直接从静态资源服务器里取出数据直接返回；如果是动态资源，那么会CGI引导向不同的应用服务器做处理。    </li>
+<li>浏览器收到响应<br>浏览器收到响应报文，会解析html文件，构建dom树；结合css文件构建render树；然后布局render树，显示到页面上。<br>布局的过程中会发生重排、重绘。<br>重排： 页面的各元素以盒模型的形式存在，需要浏览器去计算盒模型的大小，并且js代码可能会影响某些盒模型的尺寸、位置，这就需要浏览器对盒模型重新布局，这个过程叫做reflow。<br>重绘： 盒模型的某些非位置、大小信息发生改变，引起的重新绘制，叫做repain。   </li>
+<li>页面内嵌的请求<br>当页面主题结构完成之后，某些局部资源，比如图片等，还需要发送ajax进行网络请求。</li>
+</ol>
 
       
 
@@ -414,6 +426,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -426,31 +446,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">请求链路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,6 +455,22 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抓包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">请求链路</a>
               </li>
              
               <li class="article-tag-list-item">
