@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/url.jpg">
 <meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/digui.png">
 <meta property="og:image" content="http://goldbeener.top/2017/08/14/从输入url到页面显示的那些事儿/diedai.png">
-<meta property="og:updated_time" content="2017-08-14T07:10:35.000Z">
+<meta property="og:updated_time" content="2017-08-14T07:21:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从输入url到页面显示的那些事儿">
 <meta name="twitter:description" content="传说中的面试必问题，总结整理了一下，算是对整个请求链路的一次梳理。话不多说，先上图。">
@@ -191,7 +191,7 @@
 <li>负载均衡器<br>这个地方的负载均衡策略，一般是反向代理实现的。<br>发送的请求经过代理器转发http请求，向源服务器获取资源，再返回给客户端。    </li>
 <li>服务器接收到请求<br>服务器接收到请求，首先会经过层层拆包，取到http报文。<br>如果发生了重定向（301/302），那么会在响应报文的location字段里面附上资源新的地址；这样客户端会自动再次发送请求；<br>到达了正确的服务器之后，服务器会根据请求的内容区别处理，如果是静态资源，那么直接从静态资源服务器里取出数据直接返回；如果是动态资源，那么会CGI引导向不同的应用服务器做处理。    </li>
 <li>浏览器收到响应<br>浏览器收到响应报文，会解析html文件，构建dom树；结合css文件构建render树；然后布局render树，显示到页面上。<br>布局的过程中会发生重排、重绘。<br>重排： 页面的各元素以盒模型的形式存在，需要浏览器去计算盒模型的大小，并且js代码可能会影响某些盒模型的尺寸、位置，这就需要浏览器对盒模型重新布局，这个过程叫做reflow。<br>重绘： 盒模型的某些非位置、大小信息发生改变，引起的重新绘制，叫做repain。   </li>
-<li>页面内嵌的请求<br>当页面主题结构完成之后，某些局部资源，比如图片等，还需要发送ajax进行网络请求。</li>
+<li>页面内嵌的请求<br>当页面主题结构完成之后，某些局部资源，比如图片等，还需要发送ajax进行网络请求。<br>但是浏览器对同一个域名下的并发请求数也做了限制，一般是6-8个；如果页面内嵌了大量的请求资源，在此限制下会加载很长时间，影响页面展示。针对该问题，一般将资源存放在多个域名下，绕过浏览器的限制。</li>
 </ol>
 
       
@@ -458,11 +458,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,11 +474,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
             
             <div class="clearfix"></div>
