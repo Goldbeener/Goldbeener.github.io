@@ -156,6 +156,105 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数组去重的几种方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/21/数组去重的几种方法/">数组去重的几种方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/21/数组去重的几种方法/" class="archive-article-date">
+  	<time datetime="2017-08-21T11:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>数组去重时js中常见的需求场景，本文总结了几种常见的、简单的、易于理解的方法，以备不时之需。<br>1 利用json的键名唯一性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">noRepeat</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> res = [],</div><div class="line">        json = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(json[arr[i]])&#123;</div><div class="line">            json[arr[i]] ++;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            json[arr[i]] = <span class="number">1</span>;</div><div class="line">            res.push(arr[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2 利用filter函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uniqueAry = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,array</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> array.indexOf(item) == index;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>3 利用forEach函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">noRepeat</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> res = [];</div><div class="line">    arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(arr.indexOf(item) == <span class="number">-1</span>)&#123;</div><div class="line">            res.push(item);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4 利用es6的set数据结果<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uniqueAry = [...new <span class="built_in">Set</span>(arr)];</div></pre></td></tr></table></figure></p>
+<p>tips:<br>arr.indexOf()和arr.forEach()是es5的新方法，需要对低版本浏览器进行polyfill。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.indexOf = <span class="built_in">Array</span>.prototype.indexOf || <span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>[i] == item)&#123;</div><div class="line">            <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Array</span>.prototype.forEach = <span class="built_in">Array</span>.prototype.forEach || <span class="function"><span class="keyword">function</span>(<span class="params">callback,instance</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!callback || (<span class="keyword">typeof</span> callback) !== <span class="string">'function'</span>) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">        callback.call(instance,<span class="keyword">this</span>[i],i,<span class="keyword">this</span>);</div><div class="line">    &#125;   </div><div class="line">&#125;</div><div class="line"><span class="built_in">Array</span>.prototype.filter = <span class="built_in">Array</span>.prototype.filter || <span class="function"><span class="keyword">function</span>(<span class="params">callback,instance</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!callback || <span class="keyword">typeof</span> callback !== <span class="string">'function'</span>) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">var</span> res = [];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++)&#123;</div><div class="line">        <span class="keyword">if</span>(callback.call(instance,<span class="keyword">this</span>[i],i,<span class="keyword">this</span>))&#123;</div><div class="line">            res.push(<span class="keyword">this</span>[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/21/数组去重的几种方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-node爬虫小试牛刀" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/14/node爬虫小试牛刀/">node爬虫小试牛刀</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/14/node爬虫小试牛刀/" class="archive-article-date">
+  	<time datetime="2017-08-14T08:18:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/14/node爬虫小试牛刀/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-从输入url到页面显示的那些事儿" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -635,139 +734,6 @@
 
 
   
-    <article id="post-angular中服务单例模式特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/18/angular中服务单例模式特性/">angular中服务单例模式特性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/18/angular中服务单例模式特性/" class="archive-article-date">
-  	<time datetime="2017-05-18T14:16:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>设计模式这种高大上的东西，对于小白来说一般都是鸡犬相闻不相往来。没想到今天在做一个表单验证拓展的时候与单例模式来了一次偶遇，不亦乐乎，文以载之。</p>
-<p>之前做项目的时候，见到公司的大神写过表单验证的小插件，心向往之，刚好今天在sf上看到了一个应用策略模式优雅的实现表单验证的例子，便拿来练手。如下：</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">service</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Singleton pattern</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/18/angular中服务单例模式特性/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Javascript中的模块规范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/Javascript中的模块规范/">Javascript中的模块规范</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/16/Javascript中的模块规范/" class="archive-article-date">
-  	<time datetime="2017-05-16T14:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>随着各种前端库和框架被开发出来，以及node的大放异彩，Javascript从最初的辅助脚本语言变迁到应用开发级别上。但是Javascript由于自身弱语言的特质，没有类及模块的概念，在开发大型应用上会先天不足。因此对于js来说合理的模块机制是非常重要的。      </p>
-<p>在js规范的发展过程中，CommonJs规范的提出是具有重要意义的。</p>
-<p>CommonJs规范涵盖了很多内容，包括模块、二进制、Buffer、包管理等等。  </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模块规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/16/Javascript中的模块规范/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -882,15 +848,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">charles</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抓包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -910,11 +876,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
             
             <div class="clearfix"></div>
