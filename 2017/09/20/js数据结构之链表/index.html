@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2017/09/20/js数据结构之链表/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="通常情况下，存储多个元素，常用的数据结构就是数组。但是数组中的数据在内存中的位置是连续的，因此向数组中插入或者移除元素需要移动其他的元素，成本很高。基于此，有一种新的数据结构，链表。链表中也是存储的是连续的数据，不同的是链表中的数据在内存中的位置不是连续的。数据分散在内存中的各个片段，每个数据有一个指向下一个数据位置的指针，以此把整组数据串联起来。这种构造方式，可以以较小的成本添加或者删除项。链表">
-<meta property="og:updated_time" content="2017-09-25T01:13:12.000Z">
+<meta property="og:updated_time" content="2017-09-25T01:15:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js数据结构之链表">
 <meta name="twitter:description" content="通常情况下，存储多个元素，常用的数据结构就是数组。但是数组中的数据在内存中的位置是连续的，因此向数组中插入或者移除元素需要移动其他的元素，成本很高。基于此，有一种新的数据结构，链表。链表中也是存储的是连续的数据，不同的是链表中的数据在内存中的位置不是连续的。数据分散在内存中的各个片段，每个数据有一个指向下一个数据位置的指针，以此把整组数据串联起来。这种构造方式，可以以较小的成本添加或者删除项。链表">
@@ -189,7 +189,7 @@
 <li>按顺序将原链表的各项插入新链表，注意每次都是在链表头部插入，达到逆转的效果。</li>
 </ol>
 <p>方法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">linkReverse</span>(<span class="params">list</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> nList = <span class="keyword">new</span> LinkList(),</div><div class="line">        current = list.getHead();</div><div class="line">    <span class="keyword">while</span>(current)&#123;</div><div class="line">        nList.insert(<span class="number">0</span>,current.element);</div><div class="line">        current = current.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> nList;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>该方法达到了逆转的效果，但是是新创建了一个链表，可能会有很大的开销。 需要探究一下，有没有不产生新链表的情况下达到逆转的效果。<br>以上就是关于链表的一些基本情况。That’all.</p>
+<p>该方法达到了逆转的效果，但是是新创建了一个链表，可能会有很大的开销。 需要探究一下，有没有不产生新链表的情况下达到逆转的效果。<br>以上就是关于链表的一些基本情况。</p>
 
       
 
@@ -419,6 +419,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -428,14 +436,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Singleton pattern</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,10 +451,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack</a>
               </li>
              
@@ -463,11 +459,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,6 +471,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
@@ -487,11 +487,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
             
             <div class="clearfix"></div>
