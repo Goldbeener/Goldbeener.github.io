@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2017/10/30/Vue项目三两事/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
-<meta property="og:updated_time" content="2017-10-30T09:06:03.000Z">
+<meta property="og:updated_time" content="2017-10-30T12:39:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue项目三两事">
 <meta name="twitter:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
@@ -179,12 +179,15 @@
         <p>最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。</p>
 <a id="more"></a>
 <ol>
-<li><p>根Vue实例的render函数<br>在入口文件中的根Vue实例中，一般会有一个render函数，如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  router,</div><div class="line">  store,</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-<li><p>keep-alive使用</p>
+<li>根Vue实例的render函数<br>在入口文件中的根Vue实例中，一般会有一个render函数，如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  router,</div><div class="line">  store,</div><div class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>正常的写法如上，render函数接收createElement方法，不过一般简写为h，然后该方法接收初始化渲染的页面。一般的大家都把脚手架里面的App.vue这个文件作为字符串模版传进去渲染。也有的在单页应用中，可以把路由标签‘router-view’传进去，这样渲染的时候直接跳过App.vue，根据路由配置显示对应的组件页。<br>第二种写法有一个弊端是，在使用keep-alive缓存组件的时候比较麻烦。不如第一种写法直接在App.vue中设置组件缓存规则方便。</p>
+<ol>
+<li>keep-alive使用<br>keep-alive指令可以保存切换出去的页面里面的状态，避免重新渲染。就是正常情况下需要手动管理的页面反显等操作，在vue中只需要在路由中添加一个keep-alive就可以实现了，非常方便。并且还提供了include和exclude选项配置，指定哪些组件需要保存状态，哪些不需要。<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;keep-alive include=<span class="string">"组件名"</span> exclude=<span class="string">"组件名"</span>&gt;</div><div class="line">  &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&lt;/keep-alive&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样就可以实现组件状态保存，简单说就是页面反显。<br>但是有一点需要注意的是，include和exclude的值必须是<em>命名组件</em>的名称，对匿名组件是没有效果的。<br>也就是说，在*.vue文件中必须这样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  export default &#123;</div><div class="line">    name: 'CompA',     // 必须明确指明组件名称</div><div class="line">    ...</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style&gt;&lt;/style&gt;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -426,6 +429,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -439,14 +450,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -466,10 +469,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
@@ -478,11 +477,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,6 +486,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">请求链路</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
             
             <div class="clearfix"></div>
