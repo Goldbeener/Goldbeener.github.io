@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2017/10/30/Vue项目三两事/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
-<meta property="og:updated_time" content="2017-10-30T12:39:15.000Z">
+<meta property="og:updated_time" content="2017-10-30T12:40:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue项目三两事">
 <meta name="twitter:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
@@ -187,7 +187,7 @@
 <li>keep-alive使用<br>keep-alive指令可以保存切换出去的页面里面的状态，避免重新渲染。就是正常情况下需要手动管理的页面反显等操作，在vue中只需要在路由中添加一个keep-alive就可以实现了，非常方便。并且还提供了include和exclude选项配置，指定哪些组件需要保存状态，哪些不需要。<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;keep-alive include=<span class="string">"组件名"</span> exclude=<span class="string">"组件名"</span>&gt;</div><div class="line">  &lt;router-view&gt;&lt;/router-view&gt;</div><div class="line">&lt;/keep-alive&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>这样就可以实现组件状态保存，简单说就是页面反显。<br>但是有一点需要注意的是，include和exclude的值必须是<em>命名组件</em>的名称，对匿名组件是没有效果的。<br>也就是说，在*.vue文件中必须这样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  export default &#123;</div><div class="line">    name: 'CompA',     // 必须明确指明组件名称</div><div class="line">    ...</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style&gt;&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>这样就可以实现组件状态保存，简单说就是页面反显。<br>但是有一点需要注意的是，include和exclude的值必须是<strong>命名组件</strong>的名称，对匿名组件是没有效果的。<br>也就是说，在*.vue文件中必须这样：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  export default &#123;</div><div class="line">    name: 'CompA',     // 必须明确指明组件名称</div><div class="line">    ...</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style&gt;&lt;/style&gt;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -429,14 +429,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -446,6 +438,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Singleton pattern</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,15 +481,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">请求链路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
