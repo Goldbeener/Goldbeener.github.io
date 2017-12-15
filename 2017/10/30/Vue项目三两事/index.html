@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2017/10/30/Vue项目三两事/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
-<meta property="og:updated_time" content="2017-11-27T10:14:41.000Z">
+<meta property="og:updated_time" content="2017-12-15T02:23:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue项目三两事">
 <meta name="twitter:description" content="最近在使用Vue做项目，在项目中遇到了一些问题，做以总结记录下来。">
@@ -185,6 +185,9 @@
 <p>像上面这样，每次使用时引入。有点麻烦，可以自己做一层封装，直接使用Vue.use()方法，全局注册。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 位置  入口js文件  main.js</span></div><div class="line"></div><div class="line"><span class="comment">// 1.简单方法</span></div><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line">Vue.prototype.$axios = axios</div><div class="line"><span class="comment">// 这样就可以在每个单文件组件里面使用 this.$axios()不需要引入了</span></div><div class="line"></div><div class="line"><span class="comment">// 2.插件形式封装</span></div><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">const</span> Axios = &#123;</div><div class="line">  <span class="attr">install</span>: <span class="function">(<span class="params">Vue, options</span>) =&gt;</span> &#123;</div><div class="line">    Vue.prototype.$axios = axios</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">Vue.use(Axios)</div><div class="line"><span class="comment">// 这是以Vue插件的形式进行的简单封装，在单文件组件里面也可以直接使用this.$axios了</span></div></pre></td></tr></table></figure></p>
 <p>4.自定义页面title<br>Vue移动端项目的title是以项目中index.html中的title值作为各页面的title。但是单页应用的不同模块一般是需要不同的title，Vue也支持自定义title。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 配置路由的页面</span></div><div class="line"><span class="keyword">var</span> routes = [</div><div class="line">  &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'CompA'</span>,</div><div class="line">    <span class="attr">path</span>: <span class="string">'/compaurl'</span>,</div><div class="line">    <span class="attr">component</span>: CompA,</div><div class="line">    <span class="attr">meta</span>: &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">'主页'</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'CompB'</span>,</div><div class="line">    <span class="attr">path</span>: <span class="string">'/compburl'</span>,</div><div class="line">    <span class="attr">component</span>: CompB,</div><div class="line">    <span class="attr">meta</span>: &#123;</div><div class="line">      <span class="attr">title</span>: <span class="string">'发现'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">]</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> Router(&#123;</div><div class="line">  routes</div><div class="line">&#125;)</div><div class="line"></div><div class="line">router.forEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span>(to.meta.title)&#123;</div><div class="line">    <span class="built_in">document</span>.title = to.meata.title</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>5.URLSearchParams polyfill<br>URLSearchParams()是一个新的web API，可以方便的处理查询字符串。但是在一些低版本手机浏览器上无法兼容。比如在android4、android5以下是不兼容的。在npm上找了一个包，url-search-params-polyfill，可以实现polyfill。使用也比较简单。安装之后，直接引入然后正常使用就可以。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'url-search-params-polyfill'</span></div><div class="line"><span class="keyword">var</span> query = <span class="keyword">new</span> URLSearchParams()</div><div class="line">    query.append(key, value)</div></pre></td></tr></table></figure></p>
+<p>6.vuex-router-sync<br>这是vue作者开发的一个插件，作用是把当前的路由状态，自动同步到vuex中的state里。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import &#123; sync &#125; from 'vuex-router-sync'</div><div class="line">import store from './vuex/store'</div><div class="line">import router from './router</div><div class="line"></div><div class="line">sync(store, router)</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">  el: '#vue',</div><div class="line">  store,</div><div class="line">  router</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这样就可以在页面组件中，使用this.$store.state.route访问到当前的路由信息，包含<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">route = &#123;</div><div class="line">  <span class="attr">from</span>: &#123;</div><div class="line">    <span class="attr">fullPath</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">''</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">fullPath</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">hash</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">meta</span>: &#123;&#125;,</div><div class="line">  <span class="attr">name</span>: <span class="string">''</span>,</div><div class="line">  <span class="attr">path</span>: <span class="string">''</span></div><div class="line">  params: &#123;&#125;,</div><div class="line">  <span class="attr">query</span>: &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>tips: store.state.route 是从当前的url中得到的，当前的url是因，store.state.route是果，不能本末倒置，通过改变store.state.route来改变路由。要实现路由跳转还是必须通过使用$router.push()或者$router.go()实现。<br>但是，可以通过$router.push({query: {}})来改变当前页面的查询字符串值。</p>
 
       
 
@@ -426,6 +429,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -438,23 +445,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">queue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
