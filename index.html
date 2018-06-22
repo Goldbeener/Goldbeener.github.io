@@ -180,149 +180,9 @@
 <li>pm申请公司级别的微信开发者账号（appid)</li>
 <li>添加开发者权限 </li>
 <li>开发者下载小程序官方ide</li>
-<li>生成项目模版、使用第一步申请的appid搭建项目       </li>
+<li>生成项目模版、使用第一步申请的appid搭建项目    </li>
 </ul>
-<p>搭建完成之后，官方自带的QuickStart demo项目目录结构如下：<br><img src="http://static.daojia.com/assets/project/tosimple-pic/image_1524036321112.png" alt="qucikstart pic"></p>
-<h2 id="2-开发"><a href="#2-开发" class="headerlink" title="2: 开发"></a>2: 开发</h2><p>小程序包含一个描述整体程序的 app 和多个描述各自页面的 page。</p>
-<p>结合上图：</p>
-<h3 id="描述整体程序的app"><a href="#描述整体程序的app" class="headerlink" title="描述整体程序的app"></a>描述整体程序的app</h3><p>描述整体程序的app，具体包含以下几个文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">app.js  <span class="comment">// 全局级别的 逻辑 (小程序生命周期函数、全局共享的数据、方法等)</span></div><div class="line">app.wxss  <span class="comment">// 全局级别的 样式  (所有页面生效)</span></div><div class="line">app.json  <span class="comment">// 全局级别的 配置 (页面文件路径、上下tabs、导航栏设置、网络超时时间等) </span></div><div class="line">project.config.json <span class="comment">// 小程序的基本信息、编辑器的基本配置、设置的多种编译模式（查看小程序基础库版本）</span></div></pre></td></tr></table></figure></p>
-<h3 id="描述各自页面的page"><a href="#描述各自页面的page" class="headerlink" title="描述各自页面的page"></a>描述各自页面的page</h3><p>多个描述各自页面的page，放置在pages文件夹下，每新增一个页面，就在pages下新增对应的描述文件夹。        </p>
-<p>小程序沿用MVVM的开发模式，没有dom，使用数据绑定控制页面元素的显示、隐藏、以及更改。<br>其中，每个页面由以下四部分组成：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- pages  <span class="comment">// 页面文件夹</span></div><div class="line">  - pageA <span class="comment">// 页面A</span></div><div class="line">    - pageA.wxml</div><div class="line">    - pageA.js</div><div class="line">    - pageA.wxss</div><div class="line">    - pageA.json</div><div class="line">  - pageB <span class="comment">// 页面B</span></div><div class="line">    - pageB.wxml</div><div class="line">    - pageB.js</div><div class="line">    - pageB.wxss</div><div class="line">    - pageB.json</div></pre></td></tr></table></figure></p>
-<p><strong>*.wxml</strong></p>
-<p><em>.wxml 文件，搭建页面的基本结构，类似</em>.html的功能<br><strong>与html文件的不同点：</strong></p>
-<ul>
-<li>小程序对常用基本组件做了封装，可以利用这些基础组建快速开发，使用组建标签 </li>
-</ul>
-<p><strong>*.wxss</strong></p>
-<p><em>.wxss 文件， 装饰页面样式，类似css<br><em>*与css文件的不同点：</em></em>     </p>
-<ul>
-<li>1: 尺寸单位  <strong>rpx</strong> (以ipone6为视觉稿标准，ui值直接使用rpx做单位)</li>
-<li>2: 有了全局样式（app.wxss）和局部样式（page.wxss/ component.wxss/template.wxss）</li>
-<li>3: 样式导入  @import ‘path/to/other.wxss’      </li>
-</ul>
-<p><strong>*.js</strong></p>
-<p>*.js 文件，描述页面逻辑，类似js文件功能，形式与vue中的js块类似<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">  Page(&#123;</div><div class="line">  <span class="comment">// 页面数据</span></div><div class="line">  data: &#123;</div><div class="line">    </div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 生命周期钩子函数-页面加载完成</span></div><div class="line">  onLoad: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    </div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 生命周期钩子函数-页面初次渲染完成</span></div><div class="line">  onReady: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    </div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 生命周期钩子函数-页面显示</span></div><div class="line">  onShow: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    </div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 生命周期钩子函数-页面隐藏</span></div><div class="line">  onHide: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    </div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 生命周期钩子函数-页面卸载</span></div><div class="line">  onUnload: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 当redirectTo或navigateBack的时候调用</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 页面操作 - 下拉加载 (需要在json中开启允许下拉加载)</span></div><div class="line">  onPullDownRefresh: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</div><div class="line">  <span class="comment">// 页面操作 - 触底</span></div><div class="line">  onReachBottom: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</div><div class="line">  <span class="comment">// 页面分享 </span></div><div class="line">  onShareAppMessage: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</div><div class="line">  <span class="comment">// 自定义的方法 </span></div><div class="line">  myMethod1: <span class="function"><span class="params">()</span> =&gt;</span> &#123; &#125;</div><div class="line">  myMethod2: <span class="function"><span class="params">()</span> =&gt;</span> &#123; &#125;</div><div class="line">&#125;)</div><div class="line"><span class="string">``</span><span class="string">`     </span></div><div class="line">其中data是页面的数据来源，组件中的properties是组件的数据来源。</div><div class="line">`<span class="string">``</span>js      </div><div class="line"><span class="keyword">this</span>.data.***    <span class="comment">//js文件中数据的读取方式：</span></div><div class="line"><span class="keyword">this</span>.setData(&#123;    <span class="comment">// 数据的设置方式： </span></div><div class="line">  key: newValue</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p><strong>*.json</strong></p>
-<p>*.json 页面配置文件，等同于app.json中的window项, 特殊化配置页面的title，引用组件等。     </p>
-<p>除此之外，还有模块化的wxs。</p>
-<p><strong>wxs</strong></p>
-<p>WXS 代码可以编写在 wxml 文件中的 <wxs> 标签内，或以 .wxs 为后缀名的文件内。 </wxs></p>
-<p>写在wxml文件中的wxs标签中，必须指明模块名 , 对外暴露的属性、方法可以直接在当前页面中使用。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// wxml 文件</div><div class="line">&lt;wxs module='moduleName'&gt; </div><div class="line">  // normal js code</div><div class="line">  var foo = 'sth',</div><div class="line">  function bar () &#123;&#125;</div><div class="line">  </div><div class="line">  module.exports = &#123;</div><div class="line">    // 对外暴露的属性、方法</div><div class="line">    foo,</div><div class="line">    bar</div><div class="line">  &#125;</div><div class="line">&lt;/wxs&gt;</div><div class="line"></div><div class="line">&lt;view class='page-container'&gt;</div><div class="line">  ... // normal wxml</div><div class="line">  &lt;view&gt;&#123;&#123;moduleName.foo&#125;&#125;&lt;/view&gt;  // wxs暴露的属性方法，可以直接在wxml中使用</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
-<p>写在.wxs文件中的模块，需要引入之后才可以使用<br>wxs模块声明<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">// page/comm.wxs</span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> foo = <span class="string">'msg from wxs'</span></div><div class="line">  <span class="keyword">var</span> bar = <span class="function">(<span class="params">d</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> d</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">module</span>.exports = &#123;</div><div class="line">    foo,</div><div class="line">    bar</div><div class="line">  &#125;</div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">wxs模块被wxml引用</div><div class="line">`<span class="string">``</span>js</div><div class="line">  <span class="comment">// page/pageA/pageA.wxml</span></div><div class="line"></div><div class="line">  <span class="comment">// 引用</span></div><div class="line">  &lt;wxs src=<span class="string">'path/to/comm.wxs'</span> <span class="built_in">module</span>=<span class="string">'comm'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">wxs</span>&gt;</span></span></div><div class="line"></div><div class="line">  &lt;view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>wxs模块被wxs引用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">// page/other.wxs</span></div><div class="line"></div><div class="line">  <span class="comment">// 引用</span></div><div class="line">  <span class="keyword">var</span> comm = <span class="built_in">require</span>(<span class="string">'path/to/comm.wxs'</span>)</div><div class="line"></div><div class="line">  &lt;view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span></div><div class="line"><span class="string">``</span><span class="string">`   </span></div><div class="line">### 事件</div><div class="line">**事件触发机制**   </div><div class="line">1: 组件中绑定事件处理函数   </div><div class="line">2: 自定义组件中发射事件  triggerEvent(name, data)  </div><div class="line">3: js中注册对应的事件函数</div><div class="line"></div><div class="line">**事件类型**  </div><div class="line">冒泡事件：组件触发的事件会向上层组件传递  </div><div class="line">非冒泡事件：不会传递</div><div class="line"></div><div class="line">**事件对象**   </div><div class="line">target : 触发事件的事件源  </div><div class="line">currentTarget : 事件绑定的当前组件</div><div class="line"></div><div class="line">上述两个对象里携带着，当前组件中由 data- 开头的自定属性集合 **dataset**     </div><div class="line"></div><div class="line">### 模板</div><div class="line">页面中可复用的 **wxml + wxss** 代码片段      </div><div class="line">**模板组成：** template.wxml + template.wxss   </div><div class="line">**模板声明：**    </div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="comment">// templateA.wxml</span></div><div class="line">&lt;template name=<span class="string">'temA'</span>&gt;</div><div class="line">   <span class="xml"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">'wrapper'</span>&gt;</span></span></div><div class="line">      <span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;age&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">text</span>&gt;</span>可复用的页面内容<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">view</span> <span class="attr">bindtap</span>=<span class="string">'handleA'</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span>   </div><div class="line">   <span class="tag">&lt;/<span class="name">view</span>&gt;</span> </div><div class="line">&lt;<span class="regexp">/template&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// templateA.wxss   配套的样式表</div><div class="line">.wrapper &#123;</div><div class="line">  background: #f60;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>模板引用：</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// pageA.wxml</span></div><div class="line">&lt;<span class="keyword">import</span> src=<span class="string">'path/to/templateA.wxml'</span>/&gt;</div><div class="line"></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span></div><div class="line">  ...</div><div class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">is</span>=<span class="string">'tempA'</span> <span class="attr">data</span>=<span class="string">'&#123;&#123;...needData&#125;&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  ...</div><div class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line"><span class="string">``</span><span class="string">`      </span></div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="comment">// pageA.wxss</span></div><div class="line">@<span class="keyword">import</span> <span class="string">'path/to/templateA.wxss'</span></div><div class="line"><span class="string">``</span><span class="string">`     </span></div><div class="line">**tips：**</div><div class="line">模板是页面结构和样式的复用，如果复用部分需要绑定事件函数，那么需要在每个引入的页面page.js中注册同名的事件函数 </div><div class="line">### 组件</div><div class="line">页面内可复用的**功能模块**     </div><div class="line">类似于页面，由wxml + wxss + js + json四部分组成     </div><div class="line">**1：组件声明：**  （json文件）      </div><div class="line">组件对应的json文件中设置 component： true       </div><div class="line">**2：wxml + wxss 正常编辑**       </div><div class="line"> 组件和引用组件的页面最好使用class选择器，其他的id、标签名、属性、后代选择器等可能会出现不可知的问题； 全局样式、父组件样式对子组件无效   </div><div class="line">**3： js文件**      </div><div class="line">`<span class="string">``</span>js</div><div class="line">Component(&#123;</div><div class="line">  <span class="attr">properties</span>: &#123;</div><div class="line">    <span class="comment">// 需要在组件调用是传递进来的数据</span></div><div class="line">    prop1: &#123;</div><div class="line">      <span class="attr">type</span>: <span class="built_in">String</span>/<span class="built_in">Array</span>/<span class="built_in">Object</span>,</div><div class="line">      <span class="attr">value</span>: <span class="string">'default value'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">options</span>: &#123;</div><div class="line">      <span class="attr">multipleSlots</span>: <span class="literal">true</span> <span class="comment">// 在组件定义时的选项中启用多slot支持</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="comment">// 组件内部的数据</span></div><div class="line">      someData: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">      <span class="comment">// 组件中自定义的方法</span></div><div class="line">      myMythod: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">this</span>.triggerEvent(<span class="string">'eventName'</span>, data)</div><div class="line">      &#125;</div><div class="line">    &#125; </div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p><strong>4: 组件使用：</strong></p>
-<p>首先在页面json文件声明组件；需要提供组件的标签名和对应组件路径,然后就可以在wxml中像使用基础组件一样使用自定义组件（properties中的属性要传入，methods中发射的事件需要在组件标签中绑定事件，在js中注册对应事件函数）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// page.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"usingcomponents"</span>: &#123;</div><div class="line">    <span class="string">"component-A"</span>: <span class="string">"/path/to/componentA"</span></div><div class="line">  &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<pre><code class="js"><span class="comment">// page.wxml</span>
-&lt;view&gt;
-  ...
-  &lt;componnet-a prop1=<span class="string">'{{data}}'</span> bind:eventName=<span class="string">'_handleEvent'</span>&gt;         <span class="xml"><span class="tag">&lt;/<span class="name">component-a</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span>
-</code></pre>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>小程序所有页面的路由全部由框架以栈的形式管理。页面层级最深为10层。</p>
-<p><strong>路由切换场景：</strong><br>1：小程序启动完成，初始化第一个页面（pages数组中的第一个）<br>2： 打开新的页面   wx.navigatorTo()<br>3： 页面重定向   wx.redirectTo()<br>4： 页面返回    wx.navigatorBack()<br>5： tab Bar切换  wx.switchTab()<br>6： 重加载     wx.reLaunch()   </p>
-<p><strong>常见用法示例</strong></p>
-<pre><code class="js"><span class="comment">// 正常页面跳转</span>
-wx.naviagtorTo({ <span class="comment">// redirectTo reLaunch 用法相同</span>
-  url: <span class="string">'/path/to/page?key1=val1?key2=val2'</span>,
-  <span class="attr">success</span>: <span class="function"><span class="params">()</span> =&gt;</span> {},
-  <span class="attr">fail</span>: <span class="function"><span class="params">()</span> =&gt;</span> {},
-  <span class="attr">complete</span>: <span class="function"><span class="params">()</span> =&gt;</span> {}
-})
-<span class="comment">// tab 页面切换</span>
-wx.switchTab({
-  <span class="attr">url</span>: <span class="string">'/path/to/tab/page'</span>,  <span class="comment">// 不能携带参数</span>
-  success: <span class="function"><span class="params">()</span> =&gt;</span> {},
-  <span class="attr">fail</span>: <span class="function"><span class="params">()</span> =&gt;</span> {},
-  <span class="attr">complete</span>: <span class="function"><span class="params">()</span> =&gt;</span> {}
-})
-<span class="comment">// 返回上一页</span>
-wx.navaigatorBack({
-  <span class="attr">delta</span>: <span class="number">-1</span>
-})
-</code></pre>
-<p><strong>栈及应用场景</strong><br>| 路由方式 | 触发时机 | 路由栈变化 | 应用场景 |<br>| - | - | - | - |<br>| 初始化 | 小程序启动完成 | 空栈-&gt;入栈 | 首页 |<br>| 跳转到新页面 | wx.navaigatorTo(), \<navaigator open-type="navigatorTo"> | 保留当前页面栈记录，添加新页面入栈 | 正常页面的跳转 |<br>| 重定向到新页面 | wx.redirectiTo(), \<navaigator open-type="redirectiTo"> | 清除当前页面栈记录，添加新页面入栈 | 入口登录页，跳转到正常业务页 |<br>| 页面返回 | 左上角返回按钮, wx.navigatorBack(),\<navaigator open-type="navigatorBack"> | 当前页面出栈 | 层级页面返回 |<br>| tab切换 | wx.switchTab()\<navaigator open-type="switchTab"> | 当前tab的所有页面出栈，新tab第一页入栈 | tab切换 |<br>| 重加载 | wx.relaunch()\<navaigator open-type="relaunch"> | 页面全部出栈，新页面 | 从另一个场景进入 |     </navaigator></navaigator></navaigator></navaigator></navaigator></p>
-<p><strong>打开页面限制：</strong>   </p>
-<ul>
-<li>navaigatorTo、redirectTo只能打开非tab页面   </li>
-<li>switchTab只能打开tab页面    </li>
-</ul>
-<p><strong>路由跳转触发的页面生命周期函数</strong>      </p>
-<p>0：小程序启动, app onLaunch,  app onShow,<br>1：页面第一次入栈： 依次触发onLoad、onShow、onReady,<br>2：保存栈记录，新页面入栈： 老页面onHide,  新页面同上1；<br>3：重定向：老页面onUnload, 新页面同1<br>4：返回上一页： 现页面出栈；触发onUnload, 上一个页面 直接onShow   （不触发现页面onHide）<br>5:   右上角暂时挂起小程序，触发当前页面onHide, app onHide，<br>（场景值不一致：）<br>6： 从顶部再次调起小程序 ，app onShow，保留之前离开的状态（页面位置）<br>7： 从附近进入小程序， app onShow， 清除之前的页面状态，重新进入首页    </p>
-<p><strong>生命周期常用场景</strong>    </p>
-<ul>
-<li>onLoad 页面入栈时调用，只触发一次，一般在此获取 当前页面的 query 参数</li>
-<li>onshow 页面进入栈顶的时候调用，可多次触发，一般用在进入页面刷新数据。</li>
-<li>onReady 页面初始化渲染成功之后触发，在这之后可以再次改变数据与视图层交互     </li>
-</ul>
-<p><strong>小程序运行机制</strong> </p>
-<p>前台： 小程序正常显示<br>后台： 小程序隐藏，进入后台 </p>
-<p><strong>小程序整体生命周期</strong></p>
-<ul>
-<li>onLaunch 小程序初始化完成时触发，小程序生命周期内只触发一次</li>
-<li>onShow 小程序到前台时触发，</li>
-<li>onHide 小程序到后台时触发 （home键、右上角圆键、跳转到另一个小程序）  </li>
-</ul>
-<p>小程序初始化完成之后，进入后台，正常情况下，在5分钟内不会被销毁，也就是onlaunch只会被调用一次；除非主动销毁小程序、或者在5s内连续两次以上收到系统内存警告，才会销毁小程序</p>
-<h3 id="页面传值方式"><a href="#页面传值方式" class="headerlink" title="页面传值方式"></a>页面传值方式</h3><p><strong>1：事件传值</strong><br>页面绑定的注册事件中，不能传参数<br>类似点击列表页跳转详情页这种情况，不能按照传统的在事件注册时传参数。<br>需要使用dataset传参<br>然后在事件对象中获取</p>
-<pre><code class="js"><span class="comment">// page.wxml</span>
-&lt;view catchTap=<span class="string">'handler'</span> data-id=<span class="string">'{{id}}}'</span> data-userId=<span class="string">'{{uid}}'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span>
-
-<span class="comment">// page.js</span>
-handler (e) {
-  <span class="comment">// 如果是小驼峰，取值时仍按照全小写来</span>
-  <span class="keyword">let</span> id = e.currentTarget.dataset.id 
-  <span class="keyword">let</span> uid = e.currentTarget.dataset.userid
-}
-</code></pre>
-<p><strong>2: 跨页面传值</strong>   </p>
-<ul>
-<li>globalData app.js中globalData的属性，全局可获取，可以多页面共享  </li>
-<li>storage 同步、异步设置、获取缓存数据，实现多页面共享</li>
-<li>url 中查询字符串传值  navigatorTo、redirectTo、relaunch方法中的URL可以携带查询字符串传值，在新页面的onload函数中的option参数中获取。      </li>
-</ul>
-<h2 id="本地自测"><a href="#本地自测" class="headerlink" title="本地自测"></a>本地自测</h2><p>1: 前期可以在本地准备mock文件，直接引入js文件，实现本地mock，配合搭建页面基本结构<br>相关项目目录结构如下：    </p>
-<pre><code class="js">- data    <span class="comment">// 不同页面对应的本地mock数据</span>
-  - pageA.js
-  - pageB.js
-  -...
--pages <span class="comment">// 页面目录</span>
-  - pageA
-  - pageB
-</code></pre>
-<p><strong>使用方法</strong>    </p>
-<pre><code class="js"><span class="comment">// data/pageA.js  mock数据</span>
-<span class="keyword">const</span>  page_a_data = {
-  <span class="attr">name</span>: <span class="string">''</span>,
-  <span class="attr">value</span>: <span class="string">''</span>,
-  ...
-}
-
-<span class="built_in">module</span>.exports = {
-  page_a_data
-}
-
-<span class="comment">// pageA pageA.js 页面js</span>
-<span class="keyword">const</span> data = <span class="built_in">require</span>(<span class="string">'path/to/data/pageA.js'</span>).page_a_data
-</code></pre>
-<p>2: 自己搭建node服务 （数据动态）<br>3: 借助公共的mock平台 <a href="http://www.easy-mock.com" target="_blank" rel="external">大搜车网</a>       </p>
-<p><strong>tips:</strong>    </p>
-<p>1: 小程序接口请求需要在后台配置服务域名白名单，白名单内的域名才允许进行数据交互<br>2: 使用webview组件，需要配置业务域名白名单，白名单内的域名才允许在webview内打开（需要把生成的文件上传到域名服务器根目录下）     </p>
-<h2 id="开发的最佳实践"><a href="#开发的最佳实践" class="headerlink" title="开发的最佳实践"></a>开发的最佳实践</h2><p>1：页面ui绘制，页面动态显示的要素先手动写死<br>2：本地data mock，梳理需要动态获取的数据，使用本地data模拟<br>3：自己搭建node服务自测、或者使用公共的mock平台<br>4：小程序所有的页面、组件都必须在app.json中的pages项下注册，并且该数组的第一项是小程序启动之后第一个显示的页面。开发、调试的时候可以动态调整该数组顺序，方便开发。（要新添加页面的时候，直接在该数组里写下页面路径，即可在对应位置生成空白页面模版）<br>5：可能是最佳的目录组织结构, 如下图<br><img src="http://static.daojia.com/assets/project/tosimple-pic/img_1524125786273.png" alt="best menu pic"></p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>编辑器点击上传代码<br>在微信公众平台生成预览二维码<br>每次发版不改变版本号，同一个人的后一次上传会覆盖前一次上传，以此实现测试版本更新。</p>
-<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>在微信公众号开发平台后台，选择准备上线的体验版，点击提交审核<br>填写功能页面（小程序入口页面），完善相关描述信息，提交审核<br>审核通过之后就上线成功      </p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>1：webView会占据整个page,无法局部嵌套。<br>2：小程序可以唤起第三方小程序（tip必须和第三方关联）<br>3：白名单域名数量有上限，谨慎添加。<br>4:  自定义组件中text标签动态添加class失效（小程序bug), 换成view组件正常<br>5:   小程序中wx.hideLoading() 会影响到它之前的wx.showToast（）的持续时间，最好把wx.showToast（）放在wx.hideLoading()之后<br>6：小程序没有过滤器概念。（可以用WXS等方案临时替代）<br>7： 在scroll-view中不能触发onPullDownRefresh，因此页面中需要下拉刷新时，需要直接使用view，然后借助页面json中的enablePullDownRefresh实现。<br>8： 小程序的一些授权，比如地理位置信息，摄像头等，是建立在微信获得了本机对应权限的基础上的。如果微信本身就没有开启位置信息权限，那么即使小程序获得了获取位置信息权限，也不能正确获取位置信息<br>9：小程序中position:fixed 在ios下仍会出现抖动现象；解决方案：    </p>
-<blockquote>
-<p>a: 给fixed定位的元素添加，transform： translateZ(0)强制开启</p>
-<p>b: 调整页面结构，使用position： absolute.</p>
-</blockquote>
-<p>10: 小程序中overflow： scroll在ios下仍会出现滚动不流畅问题，解决方案是： </p>
-<blockquote>
-<p>添加 -webkit-overflow-scrolling： touch;<br>但是会影响over-flow父级元素的定位，（relative、absolute），<br>最好在over-flow元素外面再包裹一层，即可解决问题。     </p>
-</blockquote>
-<h2 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h2><p>1：同一开发者上传相同版本无效切换体验二维码，可以实时生效。</p>
-
+        
       
 
       
@@ -1016,15 +876,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,11 +908,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1065,14 +933,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
