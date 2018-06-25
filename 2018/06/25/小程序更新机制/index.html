@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>essay | Sean&#39;s Blog</title>
+  <title>小程序更新机制 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="essay">
-<meta property="og:url" content="http://goldbeener.top/essay/index.html">
+  <meta name="description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序更新机制">
+<meta property="og:url" content="http://goldbeener.top/2018/06/25/小程序更新机制/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="This is my personal blog">
-<meta property="og:updated_time" content="2017-07-19T14:55:13.000Z">
+<meta property="og:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
+<meta property="og:updated_time" content="2018-06-25T02:13:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="essay">
-<meta name="twitter:description" content="This is my personal blog">
+<meta name="twitter:title" content="小程序更新机制">
+<meta name="twitter:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -155,27 +156,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-小程序更新机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      essay
+      小程序更新机制
     </h1>
   
 
         
-        <a href="/essay/index.html" class="archive-article-date">
-  	<time datetime="2017-05-22T09:08:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+        <a href="/2018/06/25/小程序更新机制/" class="archive-article-date">
+  	<time datetime="2018-06-25T02:11:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="小程序版本更新问题"><a href="#小程序版本更新问题" class="headerlink" title="小程序版本更新问题"></a>小程序版本更新问题</h2><h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><h3 id="小程序启动"><a href="#小程序启动" class="headerlink" title="小程序启动"></a>小程序启动</h3><ol>
+<li>微信客户端在首次打开小程序之前，会下载整个小程序的资源包</li>
+<li>装载首页代码，并开始渲染</li>
+<li>小程序启动分两种<ul>
+<li>冷启动</li>
+<li>热启动</li>
+</ul>
+</li>
+</ol>
+<h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><ol>
+<li>用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台</li>
+<li>当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源</li>
+</ol>
+<p>TIP: 此种情况下的启动就是小程序的 <strong>热启动</strong>, 不会加载新的资源包</p>
+<h3 id="小程序销毁机制"><a href="#小程序销毁机制" class="headerlink" title="小程序销毁机制"></a>小程序销毁机制</h3><ol>
+<li>小程序进入后台一定时间内（5分钟）没有被激活，会被销毁</li>
+<li>系统资源占用过高（5s内连续两次收到系统内存警告)， 会被销毁</li>
+</ol>
+<p>TIP: 此种情况下的启动就是小程序的 <strong>冷启动</strong>, 会检测版本更新，异步加载资源包</p>
+<h3 id="小程序版本迭代机制"><a href="#小程序版本迭代机制" class="headerlink" title="小程序版本迭代机制"></a>小程序版本迭代机制</h3><ol>
+<li>小程序，新版本代码发布之后会覆盖老版本代码.</li>
+<li>小程序在冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要在 <strong>第二次冷启动</strong> 之后才会应用。</li>
+</ol>
+<p>TIP: 以上可知，在不直接删除小程序记录重新下载进入的情况下，小程序发布新版本之后需要经过 <strong>两次冷启动</strong> 之后才能应用新本， </p>
+<p>对于用户来说就是需要以下操作之后才能体验到新版本:</p>
+<ol>
+<li>两次小程序闲置5分钟以上</li>
+<li>在微信发现栏删除小程序一次， 再重新搜索打开</li>
+</ol>
+<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>在小程序 <strong>核心库 1.9.90</strong> 版本，可以做版本更新管理器<br>在启动时检测更新，如果有更新 <strong>强制重启</strong>应用新版本，</p>
+
       
 
       
@@ -214,6 +245,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -264,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/essay/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2018/06/25/小程序更新机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,9 +318,36 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/22/小程序开发实践/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小程序开发实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
+
+
+  
+  
+  
+
+  
+  <div id="SOHUCS" sid="小程序更新机制" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -301,7 +370,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
