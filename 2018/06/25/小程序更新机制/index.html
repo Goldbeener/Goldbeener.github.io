@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://goldbeener.top">
   <title>小程序更新机制 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
+  <meta name="description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动">
 <meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序更新机制">
 <meta property="og:url" content="http://goldbeener.top/2018/06/25/小程序更新机制/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
-<meta property="og:updated_time" content="2018-06-25T02:13:54.000Z">
+<meta property="og:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动">
+<meta property="og:updated_time" content="2018-06-25T02:15:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序更新机制">
-<meta name="twitter:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动    小程序生命周期 用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台 当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源  TIP: 此种情况下的启动就是小程序的 热启动,">
+<meta name="twitter:description" content="小程序版本更新问题几个概念小程序启动 微信客户端在首次打开小程序之前，会下载整个小程序的资源包 装载首页代码，并开始渲染 小程序启动分两种 冷启动 热启动">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -185,6 +185,7 @@
 </ul>
 </li>
 </ol>
+<a id="more"></a>
 <h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><ol>
 <li>用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台</li>
 <li>当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源</li>
@@ -435,6 +436,18 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -447,15 +460,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,23 +480,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">charles</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抓包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,10 +500,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
@@ -511,11 +508,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>

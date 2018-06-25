@@ -185,28 +185,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="小程序生命周期"><a href="#小程序生命周期" class="headerlink" title="小程序生命周期"></a>小程序生命周期</h3><ol>
-<li>用户点击右上角关闭，或者按了Home键离开微信，小程序并没有直接被销毁，而是进入了后台</li>
-<li>当再次打开微信或者再次打开小程序, 小程序会从后台进入前台，此时不会再次加载资源</li>
-</ol>
-<p>TIP: 此种情况下的启动就是小程序的 <strong>热启动</strong>, 不会加载新的资源包</p>
-<h3 id="小程序销毁机制"><a href="#小程序销毁机制" class="headerlink" title="小程序销毁机制"></a>小程序销毁机制</h3><ol>
-<li>小程序进入后台一定时间内（5分钟）没有被激活，会被销毁</li>
-<li>系统资源占用过高（5s内连续两次收到系统内存警告)， 会被销毁</li>
-</ol>
-<p>TIP: 此种情况下的启动就是小程序的 <strong>冷启动</strong>, 会检测版本更新，异步加载资源包</p>
-<h3 id="小程序版本迭代机制"><a href="#小程序版本迭代机制" class="headerlink" title="小程序版本迭代机制"></a>小程序版本迭代机制</h3><ol>
-<li>小程序，新版本代码发布之后会覆盖老版本代码.</li>
-<li>小程序在冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要在 <strong>第二次冷启动</strong> 之后才会应用。</li>
-</ol>
-<p>TIP: 以上可知，在不直接删除小程序记录重新下载进入的情况下，小程序发布新版本之后需要经过 <strong>两次冷启动</strong> 之后才能应用新本， </p>
-<p>对于用户来说就是需要以下操作之后才能体验到新版本:</p>
-<ol>
-<li>两次小程序闲置5分钟以上</li>
-<li>在微信发现栏删除小程序一次， 再重新搜索打开</li>
-</ol>
-<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>在小程序 <strong>核心库 1.9.90</strong> 版本，可以做版本更新管理器<br>在启动时检测更新，如果有更新 <strong>强制重启</strong>应用新版本，</p>
-
+        
       
 
       
@@ -892,6 +871,18 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -904,15 +895,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -928,23 +915,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">charles</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">抓包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -956,10 +935,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
@@ -968,11 +943,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
