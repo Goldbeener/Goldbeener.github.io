@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="几个概念反向代理 服务器集群，不希望直接对外暴露，因此设置了一层代理服务器； 从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑； 从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。  反向代理 被代理的是 服务器">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/proxy_1528857885121.jpg">
-<meta property="og:updated_time" content="2018-06-25T12:28:37.000Z">
+<meta property="og:updated_time" content="2018-06-26T03:03:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx姿势">
 <meta name="twitter:description" content="几个概念反向代理 服务器集群，不希望直接对外暴露，因此设置了一层代理服务器； 从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑； 从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。  反向代理 被代理的是 服务器">
@@ -201,7 +201,7 @@
 <h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡是用来协助更好的实现反向代理的。</p>
 <p>使用反向代理，服务器集群响应请求的分配策略就是负载均衡策略。不能说某些源服务器承担过多的请求处理任务，而同时另一些源服务器却是闲置状态。<br>利用复杂均衡策略，可以使请求分发到合适的服务器上，以达到最快的响应速度。</p>
 <h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>nginx 是一个高性能的web服务器和反向代理服务器</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div><div class="line">nginx -v <span class="comment"># 查看是否安装成功</span></div><div class="line"></div><div class="line"><span class="comment"># nginx 配置</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div><div class="line">nginx -v <span class="comment"># 查看是否安装成功</span></div><div class="line"></div><div class="line"><span class="comment"># nginx 主配置文件</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
 <h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">nginx -h <span class="comment"># 查看命令帮助</span></div><div class="line"></div><div class="line">nginx <span class="comment"># 启动nginx</span></div><div class="line"></div><div class="line">nginx -s stop <span class="comment"># 快速停止nginx服务</span></div><div class="line">nginx -s quit <span class="comment"># 完整有序的停止nginx服务</span></div><div class="line">nginx -s reload <span class="comment"># 修改配置后重新加载nginx服务生效</span></div><div class="line">nginx -s reopen <span class="comment"># 重新打开日志文件</span></div><div class="line"></div><div class="line">nginx -t <span class="comment"># 验证配置文件是否正确</span></div></pre></td></tr></table></figure>
 <h3 id="nginx-conf-常用配置"><a href="#nginx-conf-常用配置" class="headerlink" title="nginx.conf 常用配置"></a>nginx.conf 常用配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">  <span class="comment"># 负载均衡</span></div><div class="line">  upstream lb &#123;</div><div class="line">    ip_hash <span class="comment"># 记录客户端第一次访问时的响应服务器，后续全部分配该服务器响应</span></div><div class="line">    server 10.10.10.10 <span class="comment"># 源服务器1</span></div><div class="line">    server 20.20.20.20 <span class="comment"># 源服务器2</span></div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  <span class="comment"># 反向代理</span></div><div class="line">  server &#123;</div><div class="line">    listen 80</div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://目标服务器ip:port</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  server &#123;</div><div class="line">    listen 8081</div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://lb</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><ul>
@@ -485,10 +485,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">charles</a>
               </li>
              
@@ -501,6 +497,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
@@ -509,7 +509,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,7 +521,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
