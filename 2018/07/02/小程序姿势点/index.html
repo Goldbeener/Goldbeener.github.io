@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>nginx姿势 | Sean&#39;s Blog</title>
+  <title>小程序姿势点 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="几个概念反向代理 服务器集群，不希望直接对外暴露，因此设置了一层代理服务器； 从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑； 从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。  反向代理 被代理的是 服务器">
-<meta name="keywords" content="nginx">
+  <meta name="description" content="记录小程序开发过程中的姿势点">
+<meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx姿势">
-<meta property="og:url" content="http://goldbeener.top/2018/06/25/nginx姿势/index.html">
+<meta property="og:title" content="小程序姿势点">
+<meta property="og:url" content="http://goldbeener.top/2018/07/02/小程序姿势点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="几个概念反向代理 服务器集群，不希望直接对外暴露，因此设置了一层代理服务器； 从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑； 从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。  反向代理 被代理的是 服务器">
-<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/proxy_1528857885121.jpg">
-<meta property="og:updated_time" content="2018-06-26T03:03:47.000Z">
+<meta property="og:description" content="记录小程序开发过程中的姿势点">
+<meta property="og:updated_time" content="2018-07-02T11:31:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx姿势">
-<meta name="twitter:description" content="几个概念反向代理 服务器集群，不希望直接对外暴露，因此设置了一层代理服务器； 从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑； 从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。  反向代理 被代理的是 服务器">
-<meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/proxy_1528857885121.jpg">
+<meta name="twitter:title" content="小程序姿势点">
+<meta name="twitter:description" content="记录小程序开发过程中的姿势点">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -158,60 +156,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-nginx姿势" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-小程序姿势点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      nginx姿势
+      小程序姿势点
     </h1>
   
 
         
-        <a href="/2018/06/25/nginx姿势/" class="archive-article-date">
-  	<time datetime="2018-06-25T12:22:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
+        <a href="/2018/07/02/小程序姿势点/" class="archive-article-date">
+  	<time datetime="2018-07-02T11:30:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h2><h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><ul>
-<li>服务器集群，不希望直接对外暴露，因此设置了一层代理服务器；</li>
-<li>从个人电脑访问该服务器集群提供的服务时，直接访问的是代理服务器，然后代理服务器从源服务器获取到资源再返回给个人电脑；</li>
-<li><p>从客户端角度来看，中间层代理服务器是透明的，客户端无感知，客户端不需要做任何配置就可以，认为自己就是从源服务器取得数据。</p>
-</li>
-<li><p>反向代理 被代理的是 <strong>服务器</strong></p>
-</li>
+        <h1 id="记录小程序开发过程中的姿势点"><a href="#记录小程序开发过程中的姿势点" class="headerlink" title="记录小程序开发过程中的姿势点"></a>记录小程序开发过程中的姿势点</h1><a id="more"></a>
+<ol>
+<li><code>map</code>等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖</li>
+<li><code>cover-view</code>、<code>cover-image</code> 只有这两个可以在地图层级之上。<ul>
+<li>1.9.0之下，上述两个标签只能嵌套在  <code>map</code> 等原生组件里面，以后的版本可以嵌套在view组件之上</li>
+<li><code>cover-view</code>嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。</li>
 </ul>
-<a id="more"></a>
-<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><ul>
-<li>有反向代理就有正向代理。</li>
-<li>正向代理的场景是，在公司内网，不希望无限制的访问外网资源，因此也设置了一层代理服务器。</li>
-<li>从个人电脑请求访问资源的时候，客户端向代理发送一个请求，并指定目标资源的路径，然后代理服务器转发请求到源服务器，获取数据之后转发给客户端。</li>
-<li>从源服务器角度来看，中间代理服务器是透明的，源服务器认为是客户端直接访问的自己。</li>
-<li><p>需要注意的是，正向代理必须要在客户端做响应的配置。</p>
 </li>
-<li><p>正向代理 被代理的是 <strong>客户端</strong></p>
+<li><code>scroll-view</code> <code>scroll-x</code> 横向滚动，需要两个条件<ul>
+<li><code>scroll-view</code> (父组件)组件设置： <code>white-space: nowrap</code></li>
+<li>滚动项（子项）设置 <code>display: inline-block (inline-flex)</code>, 使各子项横向排列成一排</li>
+</ul>
 </li>
+<li><code>swiper</code> 组件可以通过动态设置<code>curre</code>属性值，达到改变当前滑块的效果<ul>
+<li>手动改变滑块会通过<code>bindchange</code>事件中的<code>e.detail.current</code>抛出当前滑块索引值</li>
 </ul>
-<h3 id="关于正向代理和反向代理的示意图"><a href="#关于正向代理和反向代理的示意图" class="headerlink" title="关于正向代理和反向代理的示意图"></a>关于正向代理和反向代理的示意图</h3><p>  <img src="https://static.daojia.com/assets/project/tosimple-pic/proxy_1528857885121.jpg" alt=""></p>
-<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>负载均衡是用来协助更好的实现反向代理的。</p>
-<p>使用反向代理，服务器集群响应请求的分配策略就是负载均衡策略。不能说某些源服务器承担过多的请求处理任务，而同时另一些源服务器却是闲置状态。<br>利用复杂均衡策略，可以使请求分发到合适的服务器上，以达到最快的响应速度。</p>
-<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>nginx 是一个高性能的web服务器和反向代理服务器</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">brew install nginx</div><div class="line">nginx -v <span class="comment"># 查看是否安装成功</span></div><div class="line"></div><div class="line"><span class="comment"># nginx 主配置文件</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">nginx -h <span class="comment"># 查看命令帮助</span></div><div class="line"></div><div class="line">nginx <span class="comment"># 启动nginx</span></div><div class="line"></div><div class="line">nginx -s stop <span class="comment"># 快速停止nginx服务</span></div><div class="line">nginx -s quit <span class="comment"># 完整有序的停止nginx服务</span></div><div class="line">nginx -s reload <span class="comment"># 修改配置后重新加载nginx服务生效</span></div><div class="line">nginx -s reopen <span class="comment"># 重新打开日志文件</span></div><div class="line"></div><div class="line">nginx -t <span class="comment"># 验证配置文件是否正确</span></div></pre></td></tr></table></figure>
-<h3 id="nginx-conf-常用配置"><a href="#nginx-conf-常用配置" class="headerlink" title="nginx.conf 常用配置"></a>nginx.conf 常用配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">  <span class="comment"># 负载均衡</span></div><div class="line">  upstream lb &#123;</div><div class="line">    ip_hash <span class="comment"># 记录客户端第一次访问时的响应服务器，后续全部分配该服务器响应</span></div><div class="line">    server 10.10.10.10 <span class="comment"># 源服务器1</span></div><div class="line">    server 20.20.20.20 <span class="comment"># 源服务器2</span></div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  <span class="comment"># 反向代理</span></div><div class="line">  server &#123;</div><div class="line">    listen 80</div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://目标服务器ip:port</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  server &#123;</div><div class="line">    listen 8081</div><div class="line">    location / &#123;</div><div class="line">      proxy_pass http://lb</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><ul>
-<li>访问某些服务器被拒绝，需要配置host</li>
-<li>nginx 模块设置引入机制</li>
-</ul>
-<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ul>
-<li>web 服务器： 存储、处理和传递网页， 使用HTTP协议，传递的一般是 HTML页面（css、js、image）</li>
-<li>web应用程序服务器：高负载，企业业务处理</li>
-</ul>
+</li>
+</ol>
 
       
 
@@ -256,7 +238,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
         		</li>
       		
 		</ul>
@@ -312,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2018/06/25/nginx姿势/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2018/07/02/小程序姿势点/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -326,18 +308,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/02/小程序姿势点/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          小程序姿势点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/25/小程序更新机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小程序更新机制</div>
+    <a href="/2018/06/25/nginx姿势/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nginx姿势</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -352,7 +325,7 @@
   
 
   
-  <div id="SOHUCS" sid="nginx姿势" ></div> 
+  <div id="SOHUCS" sid="小程序姿势点" ></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cyt9okprL"; 
