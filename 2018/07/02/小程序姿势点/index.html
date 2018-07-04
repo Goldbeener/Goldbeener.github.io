@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2018/07/02/小程序姿势点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="记录小程序开发过程中的姿势点">
-<meta property="og:updated_time" content="2018-07-02T11:31:22.000Z">
+<meta property="og:updated_time" content="2018-07-04T09:57:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序姿势点">
 <meta name="twitter:description" content="记录小程序开发过程中的姿势点">
@@ -178,20 +178,30 @@
       
         <h1 id="记录小程序开发过程中的姿势点"><a href="#记录小程序开发过程中的姿势点" class="headerlink" title="记录小程序开发过程中的姿势点"></a>记录小程序开发过程中的姿势点</h1><a id="more"></a>
 <ol>
-<li><code>map</code>等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖</li>
-<li><code>cover-view</code>、<code>cover-image</code> 只有这两个可以在地图层级之上。<ul>
+<li><p><code>map</code>等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖</p>
+</li>
+<li><p><code>cover-view</code>、<code>cover-image</code> 只有这两个可以在地图层级之上。</p>
+<ul>
 <li>1.9.0之下，上述两个标签只能嵌套在  <code>map</code> 等原生组件里面，以后的版本可以嵌套在view组件之上</li>
 <li><code>cover-view</code>嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。</li>
 </ul>
 </li>
-<li><code>scroll-view</code> <code>scroll-x</code> 横向滚动，需要两个条件<ul>
+<li><p><code>scroll-view</code> <code>scroll-x</code> 横向滚动，需要两个条件</p>
+<ul>
 <li><code>scroll-view</code> (父组件)组件设置： <code>white-space: nowrap</code></li>
 <li>滚动项（子项）设置 <code>display: inline-block (inline-flex)</code>, 使各子项横向排列成一排</li>
 </ul>
 </li>
-<li><code>swiper</code> 组件可以通过动态设置<code>curre</code>属性值，达到改变当前滑块的效果<ul>
+<li><p><code>swiper</code> 组件可以通过动态设置<code>current</code>属性值，达到改变当前滑块的效果</p>
+<ul>
 <li>手动改变滑块会通过<code>bindchange</code>事件中的<code>e.detail.current</code>抛出当前滑块索引值</li>
 </ul>
+</li>
+<li><p>组件中使用slot插槽，插槽的样式需要定义在组件调用的页面；并且在开发工具上看可能样式没有生效，不要慌，在真机上看看。开发工具上显示的节点树有问题，如果真机上还不对，那可能是真的出问题了。</p>
+</li>
+<li><p>小程序接入高德地图，在真机上预览时，需要打开调试（放开url校验），否则地图不能正常显示</p>
+</li>
+<li><p>小程序地图地点<code>label</code>配置项，字体颜色项必须是完整的6位16进制颜色值(或8位，后两位时透明值), 不能简写，否则不生效. 直接写英文颜色单词也可以(开发工具上不能正常显示，但是真机可以)。</p>
 </li>
 </ol>
 
@@ -423,14 +433,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
@@ -447,11 +449,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,6 +469,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
@@ -479,15 +489,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,15 +509,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
