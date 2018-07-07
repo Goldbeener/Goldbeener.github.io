@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2018/07/02/小程序姿势点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="记录小程序开发过程中的姿势点">
-<meta property="og:updated_time" content="2018-07-04T09:59:24.000Z">
+<meta property="og:updated_time" content="2018-07-07T09:30:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序姿势点">
 <meta name="twitter:description" content="记录小程序开发过程中的姿势点">
@@ -193,7 +193,13 @@
 </li>
 <li>组件中使用slot插槽，插槽的样式需要定义在组件调用的页面；并且在开发工具上看可能样式没有生效，不要慌，在真机上看看。开发工具上显示的节点树有问题，如果真机上还不对，那可能是真的出问题了。</li>
 <li>小程序接入高德地图，在真机上预览时，需要打开调试（放开url校验），否则地图不能正常显示</li>
-<li>小程序地图地点<code>label</code>配置项，字体颜色项必须是完整的6位16进制颜色值(或8位，后两位时透明值), 不能简写，否则不生效. 直接写英文颜色单词也可以(开发工具上不能正常显示，但是真机可以)。</li>
+<li>小程序地图地点<code>label</code>配置项，字体颜色项必须是完整的6位16进制颜色值(或8位，后两位时透明值), 不能简写，否则不生效. 直接写英文颜色单词也可以(开发工具上不能正常显示，但是真机可以)。<br>. update 7.7 2018</li>
+<li>小程序中重置<code>button</code>的背景色，需要在<code>button</code>的虚元素上重置<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">button</span> &#123;</div><div class="line">  <span class="attribute">background</span>: transparent;</div><div class="line">  <span class="attribute">border</span>: none;</div><div class="line">  <span class="attribute">outline</span>: none;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">  <span class="attribute">border</span>: none;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">outline</span>: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然而这只是常态下的按钮样式重置，点击按钮的时候，会发现还有一闪而过的灰色背景色，<br>这是因为按钮激活的时候，会动态增加一个新的样式类<code>button-hover</code>，因此需要把这个样式类里面的背景色再覆盖掉<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.button-hover</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>小程序中 <strong>图片名</strong> 有空格，在安卓手机中不能正常加载，而ios中正常显示，需要注意</li>
 </ol>
 
       
@@ -460,15 +466,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">queue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,11 +486,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,15 +506,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
             
             <div class="clearfix"></div>
