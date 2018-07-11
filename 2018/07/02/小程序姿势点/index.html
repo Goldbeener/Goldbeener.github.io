@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://goldbeener.top/2018/07/02/小程序姿势点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="记录小程序开发过程中的姿势点">
-<meta property="og:updated_time" content="2018-07-07T09:30:42.000Z">
+<meta property="og:updated_time" content="2018-07-11T02:22:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序姿势点">
 <meta name="twitter:description" content="记录小程序开发过程中的姿势点">
@@ -200,6 +200,8 @@
 <p>然而这只是常态下的按钮样式重置，点击按钮的时候，会发现还有一闪而过的灰色背景色，<br>这是因为按钮激活的时候，会动态增加一个新的样式类<code>button-hover</code>，因此需要把这个样式类里面的背景色再覆盖掉<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.button-hover</span> &#123;</div><div class="line">  <span class="attribute">background-image</span>: transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ol>
 <li>小程序中 <strong>图片名</strong> 有空格，在安卓手机中不能正常加载，而ios中正常显示，需要注意</li>
+<li><code>cover-view</code> 组件在设置背景色的时候，在部分ios手机上无效，需要给设置背景色的元素加上<code>border-raius: 0.1px</code>即可</li>
+<li>列表渲染中，默认的循环项是item， 手动设置的话用<code>wx:for-item=&#39;customeName&#39;</code>, 注意 <strong>customeName</strong> 不要加双层花括号解析, 直接是一个字符串</li>
 </ol>
 
       
@@ -430,15 +432,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -454,15 +456,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,19 +488,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">oo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,7 +508,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,7 +516,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
