@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://goldbeener.top">
   <title>小程序姿势点 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录小程序开发过程中的姿势点">
+  <meta name="description" content="记录小程序开发过程中的姿势点 map等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖 cover-view、cover-image 只有这两个可以在地图层级之上。 1.9.0之下，上述两个标签只能嵌套在  map 等原生组件里面，以后的版本可以嵌套在view组件之上cover-view嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。">
 <meta name="keywords" content="小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序姿势点">
 <meta property="og:url" content="http://goldbeener.top/2018/07/02/小程序姿势点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="记录小程序开发过程中的姿势点">
-<meta property="og:updated_time" content="2018-07-11T02:22:53.000Z">
+<meta property="og:description" content="记录小程序开发过程中的姿势点 map等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖 cover-view、cover-image 只有这两个可以在地图层级之上。 1.9.0之下，上述两个标签只能嵌套在  map 等原生组件里面，以后的版本可以嵌套在view组件之上cover-view嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。">
+<meta property="og:updated_time" content="2018-07-17T11:23:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序姿势点">
-<meta name="twitter:description" content="记录小程序开发过程中的姿势点">
+<meta name="twitter:description" content="记录小程序开发过程中的姿势点 map等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖 cover-view、cover-image 只有这两个可以在地图层级之上。 1.9.0之下，上述两个标签只能嵌套在  map 等原生组件里面，以后的版本可以嵌套在view组件之上cover-view嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -176,12 +176,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="记录小程序开发过程中的姿势点"><a href="#记录小程序开发过程中的姿势点" class="headerlink" title="记录小程序开发过程中的姿势点"></a>记录小程序开发过程中的姿势点</h1><a id="more"></a>
-<ol>
+        <h1 id="记录小程序开发过程中的姿势点"><a href="#记录小程序开发过程中的姿势点" class="headerlink" title="记录小程序开发过程中的姿势点"></a>记录小程序开发过程中的姿势点</h1><ol>
 <li><code>map</code>等组件是由客户端创建的原生组件，层级最高，不能通过z-index控制层级覆盖</li>
 <li><code>cover-view</code>、<code>cover-image</code> 只有这两个可以在地图层级之上。<blockquote>
 <p>1.9.0之下，上述两个标签只能嵌套在  <code>map</code> 等原生组件里面，以后的版本可以嵌套在view组件之上<br><code>cover-view</code>嵌套在map组件中时，宽高超过map的宽高的时候，会被剪切。</p>
-</blockquote>
+<a id="more"></a></blockquote>
 </li>
 <li><code>scroll-view</code> <code>scroll-x</code> 横向滚动，需要两个条件<blockquote>
 <p><code>scroll-view</code> (父组件)组件设置： <code>white-space: nowrap</code><br>滚动项（子项）设置 <code>display: inline-block (inline-flex)</code>, 使各子项横向排列成一排</p>
@@ -202,6 +201,11 @@
 <li>小程序中 <strong>图片名</strong> 有空格，在安卓手机中不能正常加载，而ios中正常显示，需要注意</li>
 <li><code>cover-view</code> 组件在设置背景色的时候，在部分ios手机上无效，需要给设置背景色的元素加上<code>border-raius: 0.1px</code>即可</li>
 <li>列表渲染中，默认的循环项是item， 手动设置的话用<code>wx:for-item=&#39;customeName&#39;</code>, 注意 <strong>customeName</strong> 不要加双层花括号解析, 直接是一个字符串</li>
+<li><p><code>text</code>组件的折行写法会影响样式展示, 需要注意</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span>这段文本是正常显示<span class="tag">&lt;/<span class="name">text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">text</span>&gt;</span></div><div class="line">  这段文本的高度将会是上一段的两倍，会把折行的空白也当作文本显示</div><div class="line"><span class="tag">&lt;/<span class="name">text</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>分包加载  核心在于 <strong>页面包分配</strong>， 只需要载app.json里面配置好对应的文件就可以.</p>
+</li>
 </ol>
 
       
@@ -432,15 +436,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,27 +460,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +472,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +496,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,15 +520,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
