@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>Archives: 2017/9 | Sean&#39;s Blog</title>
+  <title>小程序性能优化点 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="http://goldbeener.top/archives/2017/09/index.html">
+  <meta name="description" content="小程序性能优化性能问题体现 首屏白屏时间长 加载loading时间长 操作反馈慢（点击，滑动）">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序性能优化点">
+<meta property="og:url" content="http://goldbeener.top/2018/07/17/小程序性能优化点/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="This is my personal blog">
+<meta property="og:description" content="小程序性能优化性能问题体现 首屏白屏时间长 加载loading时间长 操作反馈慢（点击，滑动）">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/14/16496d8fc5d55108?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/14/16496d6e26e5139c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/14/16496db4be99d15f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/14/16496e7400dad068?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-07-17T11:25:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
-<meta name="twitter:description" content="This is my personal blog">
+<meta name="twitter:title" content="小程序性能优化点">
+<meta name="twitter:description" content="小程序性能优化性能问题体现 首屏白屏时间长 加载loading时间长 操作反馈慢（点击，滑动）">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/14/16496d8fc5d55108?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -154,186 +161,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-小程序性能优化点" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小程序性能优化点
+    </h1>
+  
+
+        
+        <a href="/2018/07/17/小程序性能优化点/" class="archive-article-date">
+  	<time datetime="2018-07-17T11:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小程序性能优化"><a href="#小程序性能优化" class="headerlink" title="小程序性能优化"></a>小程序性能优化</h1><h2 id="性能问题体现"><a href="#性能问题体现" class="headerlink" title="性能问题体现"></a>性能问题体现</h2><ol>
+<li>首屏白屏时间长</li>
+<li>加载loading时间长</li>
+<li>操作反馈慢（点击，滑动）</li>
+</ol>
+<a id="more"></a>
+<h2 id="优化方向"><a href="#优化方向" class="headerlink" title="优化方向"></a>优化方向</h2><ul>
+<li>启动加载性能 –&gt;  问题1、2</li>
+<li>渲染性能 –&gt; 问题3</li>
+</ul>
+<h2 id="启动加载性能"><a href="#启动加载性能" class="headerlink" title="启动加载性能"></a>启动加载性能</h2><h3 id="小程序加载顺序"><a href="#小程序加载顺序" class="headerlink" title="小程序加载顺序"></a>小程序加载顺序</h3><p><img src="https://user-gold-cdn.xitu.io/2018/7/14/16496d8fc5d55108?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="加载顺序"></p>
+<p>如图可知：</p>
+<ol>
+<li>微信环境初始化小程序环境， 为小程序启动做准备</li>
+<li>下载小程序包</li>
+<li>业务代码注入，渲染首屏</li>
+<li>落地页数据请求</li>
+</ol>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/14/16496d6e26e5139c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="小程序启动过程图"></p>
+<p>三张图分别对应的是， 小程序环境准备完成之后的步骤，</p>
+<ul>
+<li>第一张图， 下载小程序包的时候微信为小程序展示的固定的启动页面， 显示小程序图标、名称、加载提示</li>
+<li>第二张图， 业务代码注入过程，将下载完成的小程序包注入到执行环境，开始编译</li>
+<li>落地页数据请求，针对部分小程序首评数据需要异步加载</li>
+</ul>
+<h3 id="启动加载性能优化"><a href="#启动加载性能优化" class="headerlink" title="启动加载性能优化"></a>启动加载性能优化</h3><p>初始化小程序环境是微信环境做的工作，我们无能为力。 除此之外，下载小程序包是主要的性能影响点，毫无疑问，包的大小与下载耗时成正相关，因此对应的优化点应该放在控制小程序包的大小上.</p>
+<ul>
+<li>勾选开发者工具中， <code>上传时压缩代码</code></li>
+<li>及时清理无用的资源（js文件、图片、demo页面等）</li>
+<li>减少本地图片数量，最好使用网络图片，不使用过大的图片</li>
+<li>分包加载， 初始化时只加载首评相关、高频访问的资源，其他的按需加载</li>
+</ul>
+<h3 id="分包加载示意图"><a href="#分包加载示意图" class="headerlink" title="分包加载示意图"></a>分包加载示意图</h3><p><img src="https://user-gold-cdn.xitu.io/2018/7/14/16496db4be99d15f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="分包加载"></p>
+<h3 id="首屏加载其他优化点"><a href="#首屏加载其他优化点" class="headerlink" title="首屏加载其他优化点"></a>首屏加载其他优化点</h3><p>除了包大小之外，还可以做一下工作，优化等待体验</p>
+<ol>
+<li>提前做异步请求，页面最好在<code>onLoad</code>时异步请求数据，不要在<code>onReady</code>时请求</li>
+<li>缓存数据，请求时先展示缓存内容，让页面尽快展示，请求到最新数据之后再刷新</li>
+<li>避免白屏，使用骨架屏等</li>
+<li>操作反馈要明显</li>
+</ol>
+<h2 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h2><p>小程序启动成功之后，之后的页面重渲染大多数是由页面数据更新引起的，因此渲染性能问题主要跟<code>setData</code>方法有关, 正确的使用<code>setData</code>可以有效避免渲染性能问题</p>
+<h3 id="setData-的本质"><a href="#setData-的本质" class="headerlink" title="setData 的本质"></a>setData 的本质</h3><p><img src="https://user-gold-cdn.xitu.io/2018/7/14/16496e7400dad068?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="setdata 原理"></p>
+<p>小程序 视图层是使用webview作为渲染载体， 逻辑层是独立的JavascriptCore作为运行环境。两者是独立的，并不具备数据共享能力。 简言之，每次数据更新，都需要做一次线程间的通信。 因此不正确的使用setData往往会产生性能问题。</p>
+<ol>
+<li>数据量， 数据量的大小与耗时成正相关， 不要传输过大的数据</li>
+<li>调用频率，setData会引起页面重新渲染，高频率的调用setData，会阻塞页面其他用户交互。 可以合并相关的数据更新</li>
+<li>setData 只托管与页面渲染有关的数据，不要用来函数间共享数据。 其他与页面渲染无关的数据可以直接挂载载page对象上，即this上，不要挂载在this.data上</li>
+<li>不要在后台页面中进行setData操作， 会影响前台页面性能，后台的页面数据更新可以放在该页面进入前台的时候做</li>
+</ol>
+<p>除此之外， 事件的绑定也是一次进程间的通信，也会影响到性能，</p>
+<ol>
+<li><p>事件使用不当</p>
+<ul>
+<li>删除无用的事件绑定，不要绑定了一个事件，然后在js中写一个空函数</li>
+<li>绑定事件时，如果在节点上使用了<code>data-</code>的自定义属性，传递数据， 不要传递大体量的数据</li>
+</ul>
+</li>
+<li><p>页面方法<code>onPageScroll</code>使用， 每次页面滚动都会触发，避免在里面写过于复杂的逻辑</p>
+</li>
+<li><p>节点监控建议使用 节点布局相交状态监听<code>IntersectionObserver</code>， 避免频繁的查询节点信息<code>SelectQuery</code></p>
+</li>
+<li><p>使用自定义组件，自定义组件自成独立的逻辑空间，不会影响页面其他元素， 有自己独立的setData调用。</p>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很高兴能对你有所帮助<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/20/js数据结构之链表/" class="archive-article-date">
-  	<time datetime="2017-09-20T08:56:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/js数据结构之链表/">js数据结构之链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">linkList</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2018/07/17/小程序性能优化点/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/19/js数据结构之栈和队列/" class="archive-article-date">
-  	<time datetime="2017-09-19T07:06:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/19/js数据结构之栈和队列/">js数据结构之栈和队列</a>
-    </h1>
+  
+    <a href="/2018/07/02/小程序姿势点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小程序姿势点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">queue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/08/数组搜索算法/" class="archive-article-date">
-  	<time datetime="2017-09-08T01:55:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/08/数组搜索算法/">数组搜索算法</a>
-    </h1>
+  <div id="SOHUCS" sid="小程序性能优化点" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/06/数组排序算法/" class="archive-article-date">
-  	<time datetime="2017-09-06T15:30:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/06/数组排序算法/">数组排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -356,8 +409,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
