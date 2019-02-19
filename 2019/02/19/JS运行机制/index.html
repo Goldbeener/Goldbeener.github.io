@@ -15,15 +15,15 @@
 <meta property="og:url" content="http://goldbeener.top/2019/02/19/JS运行机制/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="js 运行机制js不能够直接编译成机器语言来运行事实上，js运行在一个容器里，这个容器可以读你的代码然后执行这个容器必须要能做到两件事情 * 解析你的代码然后把它们转换成机器可执行的命令 * 对外暴露一些可用于外界做交互的对象（比如浏览器中的window、DOM； node中的require、Buffer） 类似的容器有： 浏览器、node等">
-<meta property="og:image" content="https://uploader.shimo.im/f/OdrtPJuGVw42ygmk.png!thumbnail">
-<meta property="og:image" content="https://uploader.shimo.im/f/krHSuAVoIrgu5FYs.png!thumbnail">
-<meta property="og:image" content="https://uploader.shimo.im/f/oNNm1kgahVcB0XYy.png!thumbnail">
-<meta property="og:image" content="https://uploader.shimo.im/f/oRlPppTYfsA4pUxt.png!thumbnail">
-<meta property="og:updated_time" content="2019-02-19T09:35:23.000Z">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/engine_1550569561477.png">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG230_1550569601596.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/js_runtime_1550569642037.png">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/客户端小程序_1550569501930.png">
+<meta property="og:updated_time" content="2019-02-19T09:47:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS运行机制">
 <meta name="twitter:description" content="js 运行机制js不能够直接编译成机器语言来运行事实上，js运行在一个容器里，这个容器可以读你的代码然后执行这个容器必须要能做到两件事情 * 解析你的代码然后把它们转换成机器可执行的命令 * 对外暴露一些可用于外界做交互的对象（比如浏览器中的window、DOM； node中的require、Buffer） 类似的容器有： 浏览器、node等">
-<meta name="twitter:image" content="https://uploader.shimo.im/f/OdrtPJuGVw42ygmk.png!thumbnail">
+<meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/engine_1550569561477.png">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -189,7 +189,7 @@
 <p>完成第一步工作的叫做 JS 引擎<br>完成第二部分工作的叫做 JS Runtime </p>
 <p>JIT编译器<br>不会把所有代码全部先编译然后再执行；而是按照代码的逻辑，一边编译一边执行</p>
 <p><strong>js引擎</strong></p>
-<p>js引擎的机制的示意图<br><img src="https://uploader.shimo.im/f/OdrtPJuGVw42ygmk.png!thumbnail" alt="图片"></p>
+<p>js引擎的机制的示意图<br><img src="https://static.daojia.com/assets/project/tosimple-pic/engine_1550569561477.png" alt="图片"></p>
 <p>包含两个组件；</p>
 <ul>
 <li>Memory Heap 内存堆 – 这里是内存分发的地方，也是垃圾回收处理的地方</li>
@@ -201,7 +201,7 @@
 <p>AJAX 请求api<br>DOM 事件 api<br>Timers<br>window 对象<br>等</p>
 <p><strong>单线程</strong><br>js单线程 为什么？<br>源头上：<br> js最初被设计使用在浏览器上，作为浏览器上的脚本语言，需要与用户的操作互动以及操作DOM， 如果是多线程的话，需要关注各个线程之间状态的同步问题，比如在thread A上删除了DOM节点，但是同时thread B正在编辑该DOM节点，就会造成冲突，需要复杂的同步问题。<br>单线程的话，不需要关注状态的同步问题，没有死锁的存在，也没有线程上下文交换所带来的性能上的开销</p>
 <p><strong>Call Stack 调用栈</strong><br>常说的JS同步运行机制，在一个线程上一次只做一件事。<br>就是发生在调用栈里<br>栈是一种 LIFO 的数据结构，先进后出，<br>并且只会关注栈顶的执行单元，除非它执行完毕【执行至完成】，或者被分发给其他模块，然后才是其后的调用<br>talk is cheap， show me the pic<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function foo () &#123;</div><div class="line">  console.log(&apos;foo&apos;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar () &#123;</div><div class="line">  console.log(&apos;bar&apos;)</div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line">bar()</div><div class="line"></div><div class="line">console.log（&apos;waiting...&apos;） // 直到bar()函数被完全执行完成才会入栈执行</div></pre></td></tr></table></figure></p>
-<p><img src="https://uploader.shimo.im/f/krHSuAVoIrgu5FYs.png!thumbnail" alt="图片"></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG230_1550569601596.jpeg" alt="图片"></p>
 <p>以上是同步的执行模式</p>
 <p><strong>这种机制会引起什么问题？</strong><br>什么是 同步 &amp; 异步？<br>一般操作可以分为两个步骤，</p>
 <pre><code>* 发起调用
@@ -218,7 +218,7 @@
 <li>Event Loop</li>
 </ul>
 <p><strong>JS Event Loop 示意图</strong></p>
-<p><img src="https://uploader.shimo.im/f/oNNm1kgahVcB0XYy.png!thumbnail" alt="图片"></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/js_runtime_1550569642037.png" alt="图片"></p>
 <p><strong>事件循环</strong><br>既然是循环，需要多个元素协同，<br>如上示意图，主要有三个部分完成<br> <strong>调用堆栈  +  web API 模块 + callback queue ／（event queue）</strong></p>
 <p>代码的可执行单元（比如函数调用）, 被推入栈顶；<br>引擎开始解析代码，</p>
 <ul>
@@ -263,7 +263,7 @@
 <li>如果在微任务执行过程中，产生了新的微任务，会直接加在本次的微任务队列里面，跟源微任务在同一次循环里执行</li>
 </ol>
 <p>一个比较细致的结构图</p>
-<p><img src="https://uploader.shimo.im/f/oRlPppTYfsA4pUxt.png!thumbnail" alt="图片"></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/客户端小程序_1550569501930.png" alt="图片"></p>
 
       
 
@@ -497,11 +497,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,15 +517,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,14 +541,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">charles</a>
               </li>
              
@@ -553,7 +549,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,7 +557,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,6 +574,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
             
             <div class="clearfix"></div>
