@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>相册 | Sean&#39;s Blog</title>
+  <title>[译]如何配置nginx | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="http://goldbeener.top/photos/index.html">
+  <meta name="description" content="原文地址： How to Configure NGINX  Nginx是一个轻量的、高性能、专为高并发设计的web服务器。 Nginx一个鲜明的特点就是，能够高效的处理诸如HTML之类的媒体文件。Nginx采用异步事件驱动模型，以提供高负载下的可预测性能。 动态内容经过Nginx透传给CGI、FastCGI或者其他的诸如Apache的web服务器，然后这些内容又返回给Nginx以分发给客户端。">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译]如何配置nginx">
+<meta property="og:url" content="http://goldbeener.top/2019/05/27/译-如何配置nginx/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:updated_time" content="2017-07-02T15:25:27.000Z">
+<meta property="og:description" content="原文地址： How to Configure NGINX  Nginx是一个轻量的、高性能、专为高并发设计的web服务器。 Nginx一个鲜明的特点就是，能够高效的处理诸如HTML之类的媒体文件。Nginx采用异步事件驱动模型，以提供高负载下的可预测性能。 动态内容经过Nginx透传给CGI、FastCGI或者其他的诸如Apache的web服务器，然后这些内容又返回给Nginx以分发给客户端。">
+<meta property="og:image" content="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/how_to_configure_nginx.png">
+<meta property="og:updated_time" content="2019-05-27T12:41:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
+<meta name="twitter:title" content="[译]如何配置nginx">
+<meta name="twitter:description" content="原文地址： How to Configure NGINX  Nginx是一个轻量的、高性能、专为高并发设计的web服务器。 Nginx一个鲜明的特点就是，能够高效的处理诸如HTML之类的媒体文件。Nginx采用异步事件驱动模型，以提供高负载下的可预测性能。 动态内容经过Nginx透传给CGI、FastCGI或者其他的诸如Apache的web服务器，然后这些内容又返回给Nginx以分发给客户端。">
+<meta name="twitter:image" content="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/how_to_configure_nginx.png">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -152,30 +158,126 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-译-如何配置nginx" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      相册
+      [译]如何配置nginx
     </h1>
   
 
         
-        <a href="/photos/index.html" class="archive-article-date">
-  	<time datetime="2017-06-21T14:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+        <a href="/2019/05/27/译-如何配置nginx/" class="archive-article-date">
+  	<time datetime="2019-05-27T12:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><link type="text/css" href="/fancybox/jquery.fancybox.css" rel="stylesheet"></p>
-<p><div class="instagram"><br>    <section class="archives album"><br>        <ul class="img-box-ul"></ul><br>    </section><br></div></p>
-<script src="/js/photo.js"></script>
-
+        <p><img src="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/how_to_configure_nginx.png" alt="image"></p>
+<blockquote>
+<p>原文地址： <a href="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/" target="_blank" rel="external">How to Configure NGINX</a></p>
+</blockquote>
+<p>Nginx是一个轻量的、高性能、专为高并发设计的web服务器。</p>
+<p>Nginx一个鲜明的特点就是，能够高效的处理诸如HTML之类的媒体文件。Nginx采用异步事件驱动模型，以提供高负载下的可预测性能。</p>
+<p>动态内容经过Nginx透传给CGI、FastCGI或者其他的诸如Apache的web服务器，然后这些内容又返回给Nginx以分发给客户端。本文将使你熟悉基本的Nginx参数配置和规定。</p>
+<a id="more"></a>
+<h2 id="指令-Directives-amp-块-Blocks-amp-上下文-Contexts"><a href="#指令-Directives-amp-块-Blocks-amp-上下文-Contexts" class="headerlink" title="指令(Directives)&amp;块(Blocks)&amp;上下文(Contexts)"></a>指令(Directives)&amp;块(Blocks)&amp;上下文(Contexts)</h2><p>所有的Nginx配置文件都位于<code>/etc/nginx</code>目录下，基本的也是最主要的配置文件是<code>/etc/nginx/nginx.conf</code>。</p>
+<p>Nginx的配置项也被称之为<code>指令</code>。指令集合就是常说的<code>块</code>或者<code>上下文</code>, 两者是相同的。</p>
+<p>以字符<code>#</code>开头的行是注释行，不会被Nginx所解析。指令行必须以分号<code>;</code>结尾，否则Nginx无法正确的加载配置文件，并抛出错误。</p>
+<p>以下截取自安装nginx时自带的配置文件<code>/etc/nginx/nginx.conf</code>。该文件开头有四个指令： <code>user</code>,<code>worker_processes</code>,<code>error_log</code>, <code>pid</code>。它们没有包含在任何指令块内，因此我们称之为存在于<code>主指令块</code>内。<code>events</code>和<code>http</code>指令块是额外的指令配置块，它们也存在于<code>主指令块</code>内。</p>
+<p>你可以参考<a href="https://nginx.org/en/docs/ngx_core_module.html" target="_blank" rel="external">nginx官方配置文件</a>来了解这些指令的含义，以及主指令块内的其他配置参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">user   nginx;</div><div class="line">worker_processes   1;</div><div class="line"></div><div class="line">error_log    /var/log/nginx/error.log warn;</div><div class="line">pid          /var/run/nginx.pid</div><div class="line"></div><div class="line"></div><div class="line">events &#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">http &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="http配置块"><a href="#http配置块" class="headerlink" title="http配置块"></a>http配置块</h2><p><code>http</code>配置块内包含着处理web通信的指令，这些指令通常被成为<code>通用指令</code>，因为这些指令作用于所有nginx代理的站点服务。 可以查阅<a href="https://nginx.org/en/docs/ngx_core_module.html" target="_blank" rel="external">nginx官方配置文件</a>来了解<code>http</code>配置块内的所有指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">http &#123;</div><div class="line">    include     /etc/nginx/mime.type;</div><div class="line">    default_type        application/octet-stream;</div><div class="line">    </div><div class="line">    log_format  main    <span class="string">'$remote_addr - $remote-user [$time_local] "$request" '</span></div><div class="line">                        <span class="string">'$status $body_bytes_sent "$http_referer"'</span></div><div class="line">                        <span class="string">'"$http_user_agent" "$http_x_forwarded_for"'</span>;</div><div class="line">                        </div><div class="line">                        </div><div class="line">    access_log      /var/<span class="built_in">log</span>/nginx/access.log   main;</div><div class="line">    </div><div class="line">    sendfile        on;</div><div class="line">    <span class="comment">#tcp_nopush     on;</span></div><div class="line">    </div><div class="line">    keepalive_timeout       65;</div><div class="line">    </div><div class="line">    <span class="comment">#gzip   on;</span></div><div class="line">    </div><div class="line">    include     /etc/nginx/conf.d/*.conf;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Server配置块"><a href="#Server配置块" class="headerlink" title="Server配置块"></a>Server配置块</h2><p>上面的<code>http</code>配置块包含了一个<code>include</code>指令，它是用来告诉nginx站点的配置文件的位置</p>
+<ul>
+<li>如果你是用官方的nginx包安装的，那么会是像上面的那样<code>include     /etc/nginx/conf.d/*.conf</code>。 用nginx代理的每个站点都应该在目录<code>/etc/nginx/conf.d</code>下有自己的配置文件， 并且使用形如 <code>example.com.conf</code>的统一的命名规范。 没有被nginx代理的站点的配置文件应该被命名为<code>example.com.conf.disabled</code>。</li>
+<li>如果你从Debian或者Ubuntu源上安装的nginx，这条指令会是这样的<code>/etc/nginx/sites-enabled/*;</code> <code>sites-enabled</code>文件夹下包含着站点配置文件的链接，这些文件存储在<code>/etc/nginx/sites-available/</code>文件下。 可以通过移除链接的方式达到禁用站点代理的目的。</li>
+<li>根据你的安装源，可以在<code>/etc/nginx/conf.d/default.conf</code>或者<code>etc/nginx/sites-enabled/default</code> 路径下找到默认的nginx配置例子</li>
+</ul>
+<p>无论是何种安装源，每个站点的配置文件都会包含一个<code>server</code>配置块,例如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /etc/nginx/conf.d/example.com.conf</span></div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen          80 default_server;</div><div class="line">    listen          [::]:80 default_server;</div><div class="line">    server_name     example.com www.example.com;</div><div class="line">    root            /var/www/example.com;</div><div class="line">    index           index.html;</div><div class="line">    try_files <span class="variable">$uri</span> /index.html;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="监听端口"><a href="#监听端口" class="headerlink" title="监听端口"></a>监听端口</h2><p><code>listen</code> 指令告诉nginx影带监听的http链接的主机名／IP／端口号。 <code>default_server</code>参数意味着，哪些80端口上的、不符合其他特定的监听声明的请求也会被该虚拟主机处理。第二个<code>listen</code>指令是基于IPv6的，行为与上一个IPv4一致.</p>
+<h2 id="命名的虚拟主机"><a href="#命名的虚拟主机" class="headerlink" title="命名的虚拟主机"></a>命名的虚拟主机</h2><p><code>server_name</code>指令，允许一个IP地址代理多个域名，nginx代理服务器会根据收到的请求头来决定将请求转发给哪个域名。</p>
+<p>你应该为代理的每个域名创建一个单独的配置文件，下面是对应的一些例子:</p>
+<ol>
+<li><p>处理来自<code>example.com</code>和<code>www.example.com</code>的请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /etc/nginx/conf.d/example.com.conf</span></div><div class="line"></div><div class="line">server_name     example.com www.example.com;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>server_name</code>指令的值也可以是通配符<code>*</code>， <code>*.example.com</code>和<code>.example.com</code>这两个指令都是指示nginx处理来自二级域名<code>example.com</code>下的所有请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">server_name     *.example.com;</div><div class="line">server_name     .example.com;</div></pre></td></tr></table></figure>
+</li>
+<li><p>处理所有以<code>example</code>开头的域名下的请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">server_name     example.*;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Nginx还允许<code>server_name</code>的值是自定义的、无效的域名，它只管根据HTTP请求头中的域名来响应请求，不会去关注该域名是否是有效的。</p>
+<p>这种特性在局域网中是非常有用的，或者是你已经知道所有的可能发起请求的客户端。比如，前端常用的，在hosts文件中配置的ip-域名对，nginx都可以监听、处理。</p>
+<h2 id="Location路由配置块"><a href="#Location路由配置块" class="headerlink" title="Location路由配置块"></a>Location路由配置块</h2><p><code>Location</code>配置的是，Nginx如何响应请求的资源。该指令把请求抽象为特定的文件或文件夹，就像<code>server_name</code>指令指示Nginx如何处理代理域名下的请求一样， 比如<code>http://example.com/blog/</code>， 下面是一些例子:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">location / &#123; &#125;</div><div class="line">location /images/ &#123; &#125;</div><div class="line">location /blog/ &#123; &#125; </div><div class="line">location /planet/ &#123; &#125;</div><div class="line">location /planet/blog/ &#123; &#125;</div></pre></td></tr></table></figure></p>
+<p>上述是路由字符串匹配，匹配的目标是，http请求中域名之后的所有路径：</p>
+<p><strong>请求:</strong> <code>Http://example.com/</code></p>
+<p><strong>响应:</strong>  假设已经配置了主机 <code>server_name  example.com</code>, <code>location /</code>该指令将决定该请求的响应是什么。</p>
+<p>Nginx总是会用最精确的路由匹配来处理请求:</p>
+<p><strong>请求:</strong> 例如有这两个请求<code>http://example.com/planet/blog/</code> &amp;  <code>http://example.com/planet/blog/about/</code></p>
+<p><strong>响应:</strong> 在上面的路由匹配中，最终会使用<code>location  /planet/blog/ { }</code>路由下的配置处理，即使<code>location  /planet/ { }</code>该路由也是匹配的，但是因为前者是更精确的，所以会使用前者而不是后者。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">location ~ IndexPage\.php$ &#123; &#125;</div><div class="line">location ~ ^/BlogPlanet(/|/index\.php)$ &#123; &#125;</div></pre></td></tr></table></figure>
+<p>当<code>location</code>指令后面紧跟着一个波浪号<code>～</code>， 表示该路由匹配是正则匹配，并且是区分大小写的。 因此<code>IndexPage.php</code>是能够符合上述的第一个例子的，但是<code>indexpage.php</code>是不行的。在第二个例子中，正则表达式<code>^/BlogPlanet(/|index\.php)$</code>会匹配，诸如<code>/BlogPlanet/</code>和<code>/BlogPlanet/index.php</code>这样的请求，但是不会匹配到<code>/BlogPlanet</code>, <code>/blogplanet/</code>或者 <code>/blogplanet/index.php</code>这样的请求，因为大小写不符合。</p>
+<p>Nginx的正则匹配规则是遵循PCRE<a href="https://perldoc.perl.org/perlre.html" target="_blank" rel="external">（Perl Compatible Regular Expression）</a>的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">location ~* \.(pl|cgi|perl|prl)$ &#123; &#125;</div><div class="line">location ~* \.(md|mdwn|txt|mkdn)$ &#123; &#125;</div></pre></td></tr></table></figure>
+<p>如果你想使匹配规则对大小写不敏感，那么在<code>~</code>后面添加一个<code>*</code>. 上述的例子是指定nginx如何处理以文件扩展名结尾的请求。 在第一个例子中，所有以<code>.pl</code>, <code>.PL</code>, <code>.cgi</code>, <code>.CGI</code>, <code>.perl</code>, <code>.Perl</code>, <code>.prl</code>, 和<code>.PrL</code>结尾的文件请求，都是满足匹配规则的.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">location ^~ /images/IndexPage/ &#123; &#125;</div><div class="line">location ^~ /blog/BlogPlanet/ &#123; &#125;</div></pre></td></tr></table></figure>
+<p><code>location</code>指令后面跟着 <code>^~</code>组合，意味着，如果匹配到特定的字符串，就直接停止寻找更精确的路由匹配项，直接使用当前的路由配置。除此之外，与字符串匹配规则一样。如果一个请求符合该指令，那么不论后面是否有更精确的匹配项，直接使用此处的配置规则。关于匹配的顺序以及优先级，后文会有更详细的介绍。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">location = / &#123; &#125;</div></pre></td></tr></table></figure>
+<p>最后，如果你在<code>location</code>后面添加了一个等号<code>=</code>, 意味着这是一个精准的匹配，请求路径必须严格等于路由项，才会停止匹配查询。举个栗子：最后的例子会匹配到<code>http://example.com/</code>, 而不会匹配<code>http://example.com/index.html</code>, 使用精准匹配可以轻微的提升响应速度，在某个请求需要频繁的被调用的场景下是非常有用的。</p>
+<p>该指令的处理顺序如下：</p>
+<ol>
+<li>精准匹配路由是最先被处理的，如果发现符合条件的，Nginx会停止匹配搜索，直接处理请求</li>
+<li>字符串匹配是第二优先处理的，如果遇到<code>^~</code>匹配项，nginx会停止匹配，直接处理。否则，会持续匹配搜索直到找到最合适的匹配项</li>
+<li>正则匹配项（<code>~</code>和<code>~*</code>）是第三优先处理的，如果遇到符合条件的，停止搜索，处理请求</li>
+<li>如果前三步都没有匹配到，那么将会使用最通配的字符串匹配</li>
+</ol>
+<p>确保代理域名下的每个文件、文件夹至少能够匹配一个<code>location</code>指令</p>
+<blockquote>
+<p>注意：<br>不建议也不支持嵌套的location配置块</p>
+</blockquote>
+<h2 id="路由的根路径和入口文件"><a href="#路由的根路径和入口文件" class="headerlink" title="路由的根路径和入口文件"></a>路由的根路径和入口文件</h2><p><code>location</code>也是一个块指令，里面可以配置相关的指令</p>
+<p>一旦Nginx匹配到了一个请求的最佳匹配路由，该请求的响应就会被相关<code>location</code>内的指令处理。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">    root html;</div><div class="line">    index index.html index.htm;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>本例中，文件的根路径会被定位在<code>html/</code>目录下，在默认的nginx配置文件中，例子中的完整文件路径是<code>/etc/nginx/html/</code></p>
+<p><strong>请求:</strong> <code>http://example.com/blog/includes/style.css</code><br><strong>响应:</strong> nginx会尝试在<code>/etc/nginx/html/blog/includes/style.css</code>路径下寻找目标文件</p>
+<blockquote>
+<p>注意：<br>如果需要的话，<code>root</code>的值也可以使用绝对路径</p>
+</blockquote>
+<p><code>index</code>指令是告诉nginx，如果没有在目标路径找到目标文件，那么使用index指令的值代表的文件作为返回值。 例如：</p>
+<p><strong>请求:</strong> <code>http://example.com</code><br><strong>响应:</strong> nginx没有找到合适的匹配项，就会返回<code>/etc/nginx/html/index.html</code>文件</p>
+<p>如果<code>index</code>指令的值有多个，nginx会按顺序寻找文件，直到发现第一个存在的，以此作为响应。如果在相关的文件夹下<code>index.html</code>不存在，会寻找<code>index.htm</code>, 如果依然不存在，就会返回404.</p>
+<p>下面是一个稍微复杂的例子，展示了一个代理<code>example.com</code>域名的服务上的一系列<code>location</code>配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">    root   /srv/www/example.com/public_html;</div><div class="line">    index  index.html index.htm;</div><div class="line">&#125;</div><div class="line"></div><div class="line">location ~ \.pl$ &#123;</div><div class="line">    gzip off;</div><div class="line">    include /etc/nginx/fastcgi_params;</div><div class="line">    fastcgi_pass unix:/var/run/fcgiwrap.socket;</div><div class="line">    fastcgi_index index.pl;</div><div class="line">    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html<span class="variable">$fastcgi_script_name</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这个例子中，所有的请求以<code>.pl</code>为扩展名的资源，都会被第二个location块处理, 在该指令块里定义了一个<code>fastcgi</code>句柄来处理所有的请求。其他的请求则是由第一个指令块处理。 资源的请求被分发在文件系统中的<code>/srv/www/example.com/public_html/</code>路径下，如果请求的目标文件不存在，nginx会寻找<code>index.html</code>或<code>index.htm</code>代替，如果这两个文件也不存在，就会返回404.</p>
+<p>我们来分析一下下面的几个例子:</p>
+<p><strong>请求:</strong> <code>http://example.com</code></p>
+<p><strong>响应:</strong> 该请求会被第一个location匹配</p>
+<ol>
+<li><code>/srv/www/example.com/public_html/index.html</code> 路径下的文件，有的话直接返回，没有走第二步</li>
+<li><code>/srv/www/example.com/public_html/index.htm</code>路径下的文件，有的话返回，没有的话走第三步</li>
+<li>返回404错误</li>
+</ol>
+<p><strong>请求:</strong> <code>http://example.com/blog/</code><br><strong>响应:</strong><br>该请求会被第一个location匹配，请求路径里面有指出资源路径，因此拼接root路径</p>
+<ol>
+<li><code>/srv/www/example.com/public_html/blog/index.html</code> 路径下的文件，有的话直接返回，没有走第二步</li>
+<li><code>/srv/www/example.com/public_html/blog/index.htm</code>路径下的文件，有的话返回，没有的话走第三步</li>
+<li>返回404错误</li>
+</ol>
+<p><strong>请求:</strong> <code>http://example.com/tasks.pl</code><br><strong>响应:</strong><br>请求的资源是以<code>.pl</code>结尾的，会被第二个location匹配，资源名称是<code>tasks.pl</code>，拼接上root路径<br>nginx会寻找<code>/srv/www/example.com/public_html/tasks.pl</code> 路径下的文件，然后用指定的FASTCGI句柄（回调函数）处理该文件，然后把结果作为响应返回</p>
+<p><strong>请求:</strong> <code>http://example.com/username/roster.pl</code><br><strong>响应:</strong> 请求的资源是以<code>.pl</code>结尾的，会被第二个location匹配，资源名称是<code>roster.pl</code>，路径是<code>username</code>, 拼接上root路径<br>nginx会寻找<code>/srv/www/example.com/public_html/username/roster.pl</code> 路径下的文件，然后用指定的FASTCGI句柄（回调函数）处理该文件，然后把结果作为响应返回</p>
+<h2 id="总结-译者"><a href="#总结-译者" class="headerlink" title="总结(译者)"></a>总结(译者)</h2><ul>
+<li>nginx <code>location</code> 指令是取<code>请求uri</code>，与location指令后面紧跟的<code>字符串</code>或<code>正则表达式</code>做比较，选择匹配度最高的location块，用其中定义的指令处理请求。</li>
+<li><code>root</code>指令调整了资源的寻址路径，nginx会按照<code>root + uri</code>的路径来寻找请求资源</li>
+<li>如果uri没有明确指定资源名（具体的文件名），那么nginx会读取<code>index</code>指令的值作为默认返回值, 如果没有的话返回404</li>
+</ul>
 
       
 
@@ -215,6 +317,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +378,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/photos/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/05/27/译-如何配置nginx/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,9 +390,36 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/27/linux-关于ls命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[linux]关于ls命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
+
+
+  
+  
+  
+
+  
+  <div id="SOHUCS" sid="译-如何配置nginx" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -309,7 +449,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
