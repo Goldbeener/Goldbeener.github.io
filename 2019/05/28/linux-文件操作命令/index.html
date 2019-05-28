@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>Archives: 2017/5 | Sean&#39;s Blog</title>
+  <title>[linux]文件操作命令 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="http://goldbeener.top/archives/2017/05/index.html">
+  <meta name="description" content="mkdirmkdir -  make directory 新建文件夹    mkdir newDir mkdir -p ../newDir/sunNewDir">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[linux]文件操作命令">
+<meta property="og:url" content="http://goldbeener.top/2019/05/28/linux-文件操作命令/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="This is my personal blog">
+<meta property="og:description" content="mkdirmkdir -  make directory 新建文件夹    mkdir newDir mkdir -p ../newDir/sunNewDir">
+<meta property="og:updated_time" content="2019-05-28T06:30:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
-<meta name="twitter:description" content="This is my personal blog">
+<meta name="twitter:title" content="[linux]文件操作命令">
+<meta name="twitter:description" content="mkdirmkdir -  make directory 新建文件夹    mkdir newDir mkdir -p ../newDir/sunNewDir">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -154,297 +156,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linux-文件操作命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [linux]文件操作命令
+    </h1>
+  
+
+        
+        <a href="/2019/05/28/linux-文件操作命令/" class="archive-article-date">
+  	<time datetime="2019-05-28T06:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><p>mkdir -  make directory 新建文件夹   </p>
+<p>mkdir newDir</p>
+<p>mkdir -p ../newDir/sunNewDir</p>
+<a id="more"></a>
+<h2 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h2><p>rmdir - remove directory 删除空的文件夹</p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><p>cp /tmp/file_a /root/  把文件a拷贝到root 目录下</p>
+<p>cp -r /tmp/dir_a /root/  把目录a拷贝到目录root下</p>
+<p>以上的拷贝会改变文件的最后修改时间，及时你并没有修改文件内容，使用-p选项可以避免这个问题</p>
+<p>cp -p /tmp/fileA /root/fileB 文件最新修改时间并不会变</p>
+<p>cp -p /tmp/file_a /root/file_b 把文件拷贝到root下，并且重命名为b</p>
+<p>cp -rp /tmp/dirA /root/dirB  把目录dirA拷贝到root目录下, 并且重命名为dirB</p>
+<h2 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h2><p>touch file_name  新建文件</p>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>pwd 查看当前的完整路径</p>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>mv /tmp/file_a /root 把文件移动到root下</p>
+<p>mv /tmp/file_a /root/file_b 把文件移动到root下，并重命名</p>
+<p>mv /tmp/dirA /root 把目录移动到root下</p>
+<p>mv /tmp/dirA /root/dirB 把目录移动到root下，并重命名</p>
+<p>mv fileA fileB 当前路径下，文件、目录重命名</p>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>rm file_name 删除文件<br>rm -f file_nam  不接收询问，直接删除文件</p>
+<p>rm -r dirname 删除目录以及目录内的所有内容，必须要加上-r选项, 会有逐项的问询提示<br>rm -rf dirname 直接删除目录及内部内容，不会有问询</p>
+<h2 id="cat-tac"><a href="#cat-tac" class="headerlink" title="cat / tac"></a>cat / tac</h2><p>cat filename</p>
+<p>顺次展示文件内容  </p>
+<p>tac filename</p>
+<p>倒序展示文件内容</p>
+<h2 id="more-less"><a href="#more-less" class="headerlink" title="more / less"></a>more / less</h2><p>more filename</p>
+<p>less filename</p>
+<p>都是分页查看文件信息</p>
+<p>more 子命令：<br>    空格： 下一页<br>    回车： 下一行<br>    q: 退出查看</p>
+<p>less 子命令<br>    空格： 下一页<br>    回车： 下一行<br>    上箭头： 逐行回看<br>    下箭头： 逐行往下看<br>    ／keyword:  关键字搜索<br>    n: 查看下一个关键字<br>    q： 退出查看</p>
+<h2 id="head-tail"><a href="#head-tail" class="headerlink" title="head / tail"></a>head / tail</h2><p>head [-n num] filename</p>
+<p>tail [-n num] filename</p>
+<p>查看长文件的首部、尾部, 如果没有使用 <code>-n num</code> 选项指定展示的行数，则默认显示首部、尾部10行的文件内容</p>
+<p>tail -f filename </p>
+<p>动态查看 文件内容，当文件内容有实时更新时，会动态打印，常用来查看线上日志</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很高兴能对你有所帮助<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/23/对象拷贝/" class="archive-article-date">
-  	<time datetime="2017-05-23T03:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/23/对象拷贝/">对象拷贝</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">深拷贝</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/05/28/linux-文件操作命令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/deployblog/" class="archive-article-date">
-  	<time datetime="2017-05-22T09:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/deployblog/">Hexo + github 个人博客搭建</a>
-    </h1>
+  
+    <a href="/2019/05/27/译-如何配置nginx/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[译]如何配置nginx</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/oosummary/" class="archive-article-date">
-  	<time datetime="2017-05-22T08:25:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/oosummary/">OO Summary</a>
-    </h1>
+  <div id="SOHUCS" sid="linux-文件操作命令" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">oo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/18/angular中服务单例模式特性/" class="archive-article-date">
-  	<time datetime="2017-05-18T14:16:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/18/angular中服务单例模式特性/">angular中服务单例模式特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Angular</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">service</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Singleton pattern</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/Javascript中的模块规范/" class="archive-article-date">
-  	<time datetime="2017-05-16T14:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/Javascript中的模块规范/">Javascript中的模块规范</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模块规范</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/16/exports-vs-module-exports-in-node/" class="archive-article-date">
-  	<time datetime="2017-05-16T01:47:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/16/exports-vs-module-exports-in-node/">exports vs module.exports in node</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/publish-new-atticle/" class="archive-article-date">
-  	<time datetime="2017-05-08T06:22:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/publish-new-atticle/">publish new article</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hexo 教程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -474,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
