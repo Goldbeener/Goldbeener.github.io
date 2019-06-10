@@ -6,17 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>Archives | Sean&#39;s Blog</title>
+  <title>[linux]文件查找命令二 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="http://goldbeener.top/archives/index.html">
+  <meta name="description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[linux]文件查找命令二">
+<meta property="og:url" content="http://goldbeener.top/2019/06/10/linux-文件查找命令二/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="This is my personal blog">
+<meta property="og:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG80_1560170384860.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG82_1560170505615.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG83_1560171240430.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG84_1560171326773.jpeg">
+<meta property="og:updated_time" content="2019-06-10T13:04:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
-<meta name="twitter:description" content="This is my personal blog">
+<meta name="twitter:title" content="[linux]文件查找命令二">
+<meta name="twitter:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+<meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -154,36 +162,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-linux-文件查找命令二" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      [linux]文件查找命令二
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/10/linux-文件查找命令二/" class="archive-article-date">
+
+        
+        <a href="/2019/06/10/linux-文件查找命令二/" class="archive-article-date">
   	<time datetime="2019-06-10T13:04:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/10/linux-文件查找命令二/">[linux]文件查找命令二</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>前一篇的查找文件命令<code>find</code>是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找<strong>所有文件</strong>, BUT, 因为是要遍历，所以速度上是相对比较慢的。</p>
+<p>还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快</p>
+<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locate [-i] 文件名</div></pre></td></tr></table></figure>
+<p>可选配置项<code>-i</code>用来忽略大小写</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg" alt="image"></p>
+<blockquote>
+<p>locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直接在资料库中搜索，因此更加快捷</p>
+<p>但是，因为是<strong>定期更新</strong>, 因此新建的文件如果直接使用locate搜索的话，是搜不到的，需要先手动更新一下资料库</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">updatedb  # 手动更新locate的资料库</div></pre></td></tr></table></figure>
+<blockquote>
+<p>locate并不是linux自带的， 需要手动安装，可以使用<code>yum install mlocate</code> 安装， 然后初次使用的时候需要先更新一下文件资料库<code>updatedb</code>, 就可以使用搜索</p>
+</blockquote>
+<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p><code>which</code> 命令主要用来搜索<code>命令</code>所在的路径，附带着命令的<strong>别名</strong>信息</p>
+<p>也就是说which的搜索目标，是可执行的文件，就是我们日常理解的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">which rm</div></pre></td></tr></table></figure>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG80_1560170384860.jpeg" alt="image"></p>
+<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><p><code>whereis</code>也是用来搜索命令的, 与<code>which</code>不同的是，whereis会显示命令以及命令的帮助文件所在的路径，并不会显示别名信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis rm</div></pre></td></tr></table></figure></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG82_1560170505615.jpeg" alt="image"></p>
+<blockquote>
+<p>有时候使用whereis会会有两个帮助(man)信息，是因为whereis不仅可以搜索命令还可以搜索配置文件<br>因此可以使用参数， 来标示查看的是哪一种<br>whereis 1 command   表示查看的是命令<br>whereis 5 command   表示查看的是配置文件</p>
+<p>通过<code>which</code> 和 <code>whereis</code> 发现，命令大多数都存储在 <code>/usr/bin</code>目录下, 其实还有一部分是存储在<code>/usr/sbin</code>下的，二者的区别是，前者下的命令是所有用户都可以使用的，后者下的命令是只有管理员可以使用</p>
+</blockquote>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p><code>grep</code>与前面几个命令不同的是，它是用来查找文件内容的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep [-i/-v] keyword filename</div></pre></td></tr></table></figure>
+<p><code>-i</code> 还是用来忽略大小写的<br><code>-v</code> 是用来反向匹配的</p>
+<p>比如，过滤掉文件内容里的注释行，可以使用如下操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep -v ^# filename</div></pre></td></tr></table></figure></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG83_1560171240430.jpeg" alt="image"></p>
+<p>区分大小写的状况</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG84_1560171326773.jpeg" alt="image"></p>
+<p>使用<code>^# -v</code> 反向匹配所有不是注释行的信息，发现该文件内容全部是注释 </p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很高兴能对你有所帮助<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -195,355 +263,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/06/10/linux-文件查找命令二/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/10/linux-文件查找命令/" class="archive-article-date">
-  	<time datetime="2019-06-10T12:20:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/10/linux-权限管理命令/" class="archive-article-date">
-  	<time datetime="2019-06-10T11:57:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/10/linux-权限管理命令/">[linux]权限管理命令</a>
-    </h1>
+  
+    <a href="/2019/06/10/linux-文件查找命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/29/linux-链接命令/" class="archive-article-date">
-  	<time datetime="2019-05-29T06:14:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/29/linux-链接命令/">[linux]链接命令</a>
-    </h1>
+  <div id="SOHUCS" sid="linux-文件查找命令二" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/28/linux-文件操作命令/" class="archive-article-date">
-  	<time datetime="2019-05-28T06:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/28/linux-文件操作命令/">[linux]文件操作命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/27/译-如何配置nginx/" class="archive-article-date">
-  	<time datetime="2019-05-27T12:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/27/译-如何配置nginx/">[译]如何配置nginx</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/27/linux-关于ls命令/" class="archive-article-date">
-  	<time datetime="2019-05-27T12:33:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/27/linux-关于ls命令/">[linux]关于ls命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/19/更安全地获取对象属性值/" class="archive-article-date">
-  	<time datetime="2019-05-19T08:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/19/更安全地获取对象属性值/">更安全地获取对象属性值</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/06/译-JS运行时环境/" class="archive-article-date">
-  	<time datetime="2019-03-06T11:50:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/06/译-JS运行时环境/">[译]JS运行时环境</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">runtime</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/19/JS运行机制/" class="archive-article-date">
-  	<time datetime="2019-02-19T09:33:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/19/JS运行机制/">JS运行机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -574,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
