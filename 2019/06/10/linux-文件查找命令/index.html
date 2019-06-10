@@ -6,12 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>[linux]文件查找命令 | Sean&#39;s Blog</title>
+  <title>Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的  注意查找要点 不要在服务器繁忙的时候做查找操作，比较耗费性能 linux中文件名区分大小写的，即使仅大小写不一样的文">
-<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[linux]文件查找命令">
+<meta property="og:title" content="Sean&#39;s Blog">
 <meta property="og:url" content="http://goldbeener.top/2019/06/10/linux-文件查找命令/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
 <meta property="og:description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的  注意查找要点 不要在服务器繁忙的时候做查找操作，比较耗费性能 linux中文件名区分大小写的，即使仅大小写不一样的文">
@@ -21,9 +20,11 @@
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG64_1560168726166.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG65_1560168816231.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG78_1560169139256.jpeg">
-<meta property="og:updated_time" content="2019-06-10T12:20:44.000Z">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG86_1560171807127.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG85_1560171640627.jpeg">
+<meta property="og:updated_time" content="2019-06-10T13:03:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[linux]文件查找命令">
+<meta name="twitter:title" content="Sean&#39;s Blog">
 <meta name="twitter:description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的  注意查找要点 不要在服务器繁忙的时候做查找操作，比较耗费性能 linux中文件名区分大小写的，即使仅大小写不一样的文">
 <meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG77_1560168513932.jpeg">
   
@@ -166,21 +167,6 @@
             <article id="post-linux-文件查找命令" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      [linux]文件查找命令
-    </h1>
-  
-
-        
-        <a href="/2019/06/10/linux-文件查找命令/" class="archive-article-date">
-  	<time datetime="2019-06-10T12:20:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="文件查找命令"><a href="#文件查找命令" class="headerlink" title="文件查找命令"></a>文件查找命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)</div><div class="line"></div><div class="line"><span class="comment"># eg：</span></div><div class="line">find / -name init <span class="comment"># 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的</span></div></pre></td></tr></table></figure>
@@ -229,7 +215,11 @@
 <li><code>-o</code>代表<code>or</code> 表示满足任一条件即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">find /etc -name init -a -size +512K</div><div class="line">find /etc -size +512K -o -size -1024K</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG86_1560171807127.jpeg" alt="image"></p>
 <h3 id="查找文件并执行"><a href="#查找文件并执行" class="headerlink" title="查找文件并执行"></a>查找文件并执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">find /etc -name node.js -exec ls -lh &#123;&#125; \;</div></pre></td></tr></table></figure>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG85_1560171640627.jpeg" alt="image"></p>
+<p>查找文件<code>exex_cmd_demo</code>并且展示该文件信息</p>
+
       
 
       
@@ -268,17 +258,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -476,10 +455,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Angular</a>
               </li>
              
@@ -489,6 +464,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Singleton pattern</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,6 +483,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack</a>
               </li>
              
@@ -513,10 +496,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">linkList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,15 +519,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">请求链路</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
              
               <li class="article-tag-list-item">
