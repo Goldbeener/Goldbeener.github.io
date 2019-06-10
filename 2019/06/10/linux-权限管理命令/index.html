@@ -6,17 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>Archives: 2017/9 | Sean&#39;s Blog</title>
+  <title>[linux]权限管理命令 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="http://goldbeener.top/archives/2017/09/index.html">
+  <meta name="description" content="linux权限管理管理对象： 文件 + 目录  权限细则： r、w、x （读、写、执行）">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[linux]权限管理命令">
+<meta property="og:url" content="http://goldbeener.top/2019/06/10/linux-权限管理命令/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="This is my personal blog">
+<meta property="og:description" content="linux权限管理管理对象： 文件 + 目录  权限细则： r、w、x （读、写、执行）">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/ls_1559216423858.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/chown-o_1559219206313.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/chown-r_1559219206471.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/chgrp-r_1559219402622.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/chgrp-o_1559219412262.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/umask_1559221141957.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/fresh_1559221520946.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/umask-n_1559267931096.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/umask-c_1559268733545.jpeg">
+<meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/umask-t_1559268951717.jpeg">
+<meta property="og:updated_time" content="2019-06-10T11:58:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
-<meta name="twitter:description" content="This is my personal blog">
+<meta name="twitter:title" content="[linux]权限管理命令">
+<meta name="twitter:description" content="linux权限管理管理对象： 文件 + 目录  权限细则： r、w、x （读、写、执行）">
+<meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/ls_1559216423858.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
   
@@ -154,186 +167,267 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linux-权限管理命令" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [linux]权限管理命令
+    </h1>
+  
+
+        
+        <a href="/2019/06/10/linux-权限管理命令/" class="archive-article-date">
+  	<time datetime="2019-06-10T11:57:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="linux权限管理"><a href="#linux权限管理" class="headerlink" title="linux权限管理"></a>linux权限管理</h2><p><strong>管理对象</strong>： 文件 + 目录 </p>
+<p><strong>权限细则</strong>： r、w、x （读、写、执行）</p>
+<a id="more"></a>
+<h3 id="文件／目录权限含义"><a href="#文件／目录权限含义" class="headerlink" title="文件／目录权限含义"></a>文件／目录权限含义</h3><table>
+<thead>
+<tr>
+<th>权限</th>
+<th>r（读）</th>
+<th>w（写）</th>
+<th>x（执行）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件</td>
+<td>查看内容（cat/more/head）</td>
+<td>修改内容(vim)</td>
+<td>执行(script、command)</td>
+</tr>
+<tr>
+<td>目录</td>
+<td>查看目录内容(ls)</td>
+<td>新建、删除文件、目录（touch、mkdir、rmdir、rm）</td>
+<td>进入目录（cd）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一般情况下对于目录来说读和执行的操作是配对出现的，因此常见的目录权限为<code>r-x</code>, 因为不能说，你只能查看目录列表，不能进入，或者是只能进入目录，却无法使用<code>ls</code>查看目录列表</p>
+</blockquote>
+<h3 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 第一列展示的就是文件权限</span></div><div class="line">ls -l file/dir</div></pre></td></tr></table></figure>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/ls_1559216423858.jpeg" alt="image"></p>
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3><p>修改权限的操作本身也是有权限限制的,只有两类人可以修改权限:</p>
+<ol>
+<li>文件、目录所有者</li>
+<li>root 用户</li>
+</ol>
+<p>其他人是没有权限修改文件、目录的权限的</p>
+<p><strong>修改权限有两种方式:</strong></p>
+<h4 id="1-使用rwx"><a href="#1-使用rwx" class="headerlink" title="1.使用rwx"></a>1.使用rwx</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># way 1 </span></div><div class="line">chmod [u/g/o/a] [+/-/=] [r/w/x] file/dir</div><div class="line"></div><div class="line"><span class="comment"># demo</span></div><div class="line">chmod g+w index.html  <span class="comment"># 给所属组 加上写权限</span></div><div class="line">chmod u-x timer  <span class="comment"># 给所有者减少执行的权限</span></div><div class="line">chmod u=rwx index.html <span class="comment"># 给所有者的权限重置为全权限</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>在对目录权限进行修改的时候，可以通过使用<code>-R</code>选项，使得权限的变更同步到目录内的所有文件</p>
+</blockquote>
+<h4 id="2-使用数字权限"><a href="#2-使用数字权限" class="headerlink" title="2.使用数字权限"></a>2.使用数字权限</h4><p>使用三位数字顺次代表u\g\o三组的权限，<br>每一位数字本质上是三个权限权重值相加的和,</p>
+<p>三个权限对应的权重值如下:<br>r | 4<br>—|—<br>w | 2<br>x | 1</p>
+<p>rwx =&gt; 4 + 2 + 1 = 7</p>
+<p>r-x =&gt; 4 + 0 + 1 = 5</p>
+<p>因此 对文件、目录的权限修改可以如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># way 2</span></div><div class="line">chmod 755 timer <span class="comment"># 给timer目录的权限修改为rwxr-xr-x </span></div><div class="line">chmod 760 index.js <span class="comment"># 给index.js文件的权限修改为rwxrw----</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>同样也可以使用<code>-R</code>把目标目录下所有的文件权限同步为设定的值</p>
+</blockquote>
+<h3 id="修改所有者"><a href="#修改所有者" class="headerlink" title="修改所有者"></a>修改所有者</h3><p>修改文件、目录的所有者的操作，也是有权限的, </p>
+<p>具体来说，只有一类人能够有权限修改文件的所有者: <strong>root</strong></p>
+<p>其他人，<strong>甚至是文件的所有者都没有权限修改文件的所有者</strong></p>
+<p>修改文件的所有者操作如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chown 新的所有者  file／dir</div><div class="line"></div><div class="line"><span class="comment"># eg:</span></div><div class="line">chown root index.py <span class="comment"># 把index.py文件的所有者变更为root</span></div></pre></td></tr></table></figure>
+<p>文件所有者修改所有者操作失败</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/chown-o_1559219206313.jpeg" alt="image"></p>
+<p>root用户可以修改所有者</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/chown-r_1559219206471.jpeg" alt="image"></p>
+<h3 id="修改所属组"><a href="#修改所属组" class="headerlink" title="修改所属组"></a>修改所属组</h3><p>修改文件、目录的所属组的操作也是有权限的</p>
+<p><strong>有且仅有root用户可以修改文件、目录的所属组</strong></p>
+<p>修改方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">chgrp 新的所属组 file/dir </div><div class="line"></div><div class="line"># eg:</div><div class="line">chgrp root index.py # 把index.py文件的所属组变更为root</div></pre></td></tr></table></figure>
+<p>以所有者身份修改，失败</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/chgrp-r_1559219402622.jpeg" alt="image"></p>
+<p>以root的身份修改，成功</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/chgrp-o_1559219412262.jpeg" alt="image"></p>
+<h3 id="缺省权限"><a href="#缺省权限" class="headerlink" title="缺省权限"></a>缺省权限</h3><p>新建文件、目录时创建者并没有指定文件的权限，事实上系统会按照缺省权限给新建的文件分配权限<br>可以使用<code>umask -S</code> 查看缺省权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 展示当前系统默认的权限</span></div><div class="line">umaks -S</div></pre></td></tr></table></figure>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/umask_1559221141957.jpeg" alt="image"></p>
+<p>一般系统的缺省权限如上, 表示：</p>
+<p><strong>新建目录的初始权限为<code>rwxr-xr-x</code></strong></p>
+<p>即： 所有者全部权限，其他用户读、执行权限</p>
+<blockquote>
+<p>ATTENTION!!! 这是<strong>目录</strong>的权限</p>
+</blockquote>
+<p>新建文件的权限，一般是在此基础上，去掉全部用户的可执行权限,</p>
+<p>因此，<strong>新建文件的初始权限为<code>rw-r--r--</code></strong></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/fresh_1559221520946.jpeg" alt="image"></p>
+<blockquote>
+<p>新建文件没有可执行权限，是出于安全考虑，毕竟基本上病毒文件都是可执行文件. 不过，新建文件之后，可以根据需要增加文件的可执行权限</p>
+</blockquote>
+<h4 id="权限掩码"><a href="#权限掩码" class="headerlink" title="权限掩码"></a>权限掩码</h4><p><code>umask -S</code>命令可以直接显示缺省权限，如果不加<code>-S</code>选项，那么就会展示<code>权限掩码</code></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/umask-n_1559267931096.jpeg" alt="image"></p>
+<p><code>0022</code> 这个四位数字，后三位表示的是缺省权限的掩码, </p>
+<p>也就是后三位是 <code>缺省权限 &amp; 777</code> 两者进行逻辑与操作之后的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">777 &amp; 缺省权限 = 掩码</div><div class="line"></div><div class="line">全权限      rwxrwxrwx</div><div class="line">缺省权限    rwxr-xr-x      # 这就是默认的权限</div><div class="line">-------------------------  </div><div class="line">掩码022     ----w--w-</div></pre></td></tr></table></figure>
+<h4 id="修改系统缺省权限"><a href="#修改系统缺省权限" class="headerlink" title="修改系统缺省权限"></a>修改系统缺省权限</h4><p>如果想要修改缺省权限，也是可以的，但是一般不建议这样做.</p>
+<p>修改方式如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">umask</span> 四位权限掩码</div></pre></td></tr></table></figure>
+<p>比如想要设置缺省权为<code>rw-------</code></p>
+<p>计算掩码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">777         rwxrwxrwx</div><div class="line">缺省权限    rw-------</div><div class="line">------------------------</div><div class="line">掩码        --xrwxrwx   177</div></pre></td></tr></table></figure>
+<p>因此可以使用 <code>umask 177</code> 来修改缺省权限</p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/umask-c_1559268733545.jpeg" alt="image"></p>
+<p>最终可以看到，修改后的缺省权限变成了我们想要<code>rw-------</code></p>
+<p><img src="https://static.daojia.com/assets/project/tosimple-pic/umask-t_1559268951717.jpeg" alt="image"></p>
+<p>新建文件、目录的权限也变成了期望的值</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>很高兴能对你有所帮助<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/20/js数据结构之链表/" class="archive-article-date">
-  	<time datetime="2017-09-20T08:56:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/js数据结构之链表/">js数据结构之链表</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">linkList</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/06/10/linux-权限管理命令/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/19/js数据结构之栈和队列/" class="archive-article-date">
-  	<time datetime="2017-09-19T07:06:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/19/js数据结构之栈和队列/">js数据结构之栈和队列</a>
-    </h1>
+  
+    <a href="/2019/05/29/linux-链接命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[linux]链接命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">queue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/08/数组搜索算法/" class="archive-article-date">
-  	<time datetime="2017-09-08T01:55:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/08/数组搜索算法/">数组搜索算法</a>
-    </h1>
+  <div id="SOHUCS" sid="linux-权限管理命令" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cyt9okprL"; 
+var conf = "4885da259452d338b0d0fb6f30861232"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/06/数组排序算法/" class="archive-article-date">
-  	<time datetime="2017-09-06T15:30:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/06/数组排序算法/">数组排序算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -363,8 +457,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
