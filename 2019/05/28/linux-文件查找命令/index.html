@@ -6,14 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://goldbeener.top">
-  <title>Sean&#39;s Blog</title>
+  <title>[linux]文件查找命令 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
+  <meta name="description" content="1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sean&#39;s Blog">
-<meta property="og:url" content="http://goldbeener.top/2019/06/10/linux-文件查找命令/index.html">
+<meta property="og:title" content="[linux]文件查找命令">
+<meta property="og:url" content="http://goldbeener.top/2019/05/28/linux-文件查找命令/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
+<meta property="og:description" content="1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG77_1560168513932.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG63_1560168672822.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG62_1560168597539.jpeg">
@@ -22,10 +23,10 @@
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG78_1560169139256.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG86_1560171807127.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG85_1560171640627.jpeg">
-<meta property="og:updated_time" content="2019-08-23T00:52:45.495Z">
+<meta property="og:updated_time" content="2019-08-23T00:54:35.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sean&#39;s Blog">
-<meta name="twitter:description" content="文件查找命令1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
+<meta name="twitter:title" content="[linux]文件查找命令">
+<meta name="twitter:description" content="1234find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)# eg：find / -name init # 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的">
 <meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG77_1560168513932.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
@@ -167,9 +168,24 @@
             <article id="post-linux-文件查找命令" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      [linux]文件查找命令
+    </h1>
+  
+
+        
+        <a href="/2019/05/28/linux-文件查找命令/" class="archive-article-date">
+  	<time datetime="2019-05-28T06:29:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-28</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="文件查找命令"><a href="#文件查找命令" class="headerlink" title="文件查找命令"></a>文件查找命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)</div><div class="line"></div><div class="line"><span class="comment"># eg：</span></div><div class="line">find / -name init <span class="comment"># 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的</span></div></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find 查找范围(目录) [选项] 查找条件(文件名， 是严格匹配的，不是包含匹配)</div><div class="line"></div><div class="line"><span class="comment"># eg：</span></div><div class="line">find / -name init <span class="comment"># 查找根目录下，所有名为init的文件，注意是完全等于init，并不是包含init字样的,并且linux中文件名是区分大小写的</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG77_1560168513932.jpeg" alt="image"></p>
 <h3 id="注意查找要点"><a href="#注意查找要点" class="headerlink" title="注意查找要点"></a>注意查找要点</h3><ol>
@@ -259,6 +275,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -309,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/06/10/linux-文件查找命令/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://goldbeener.top/2019/05/28/linux-文件查找命令/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +350,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/10/linux-文件查找命令二/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/28/linux-文件操作命令/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          [linux]文件查找命令二
+          [linux]文件操作命令
         
       </div>
     </a>
   
   
-    <a href="/2019/06/10/linux-权限管理命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">[linux]权限管理命令</div>
+    <a href="/2019/05/27/译-如何配置nginx/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[译]如何配置nginx</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -469,15 +496,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,11 +532,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">oo</a>
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+                <a href="javascript:void(0)" class="js-tag color3">oo</a>
               </li>
              
               <li class="article-tag-list-item">
