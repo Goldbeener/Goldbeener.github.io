@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://goldbeener.top">
   <title>[linux]文件查找命令二 | Sean&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+  <meta name="description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[linux]文件查找命令二">
 <meta property="og:url" content="http://goldbeener.top/2019/06/10/linux-文件查找命令二/index.html">
 <meta property="og:site_name" content="Sean&#39;s Blog">
-<meta property="og:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+<meta property="og:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG80_1560170384860.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG82_1560170505615.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG83_1560171240430.jpeg">
 <meta property="og:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG84_1560171326773.jpeg">
-<meta property="og:updated_time" content="2019-06-10T13:05:06.000Z">
+<meta property="og:updated_time" content="2019-08-23T00:50:42.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[linux]文件查找命令二">
-<meta name="twitter:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快 locate1locate [-i] 文件名 可选配置项-i用来忽略大小写   locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直">
+<meta name="twitter:description" content="背景前一篇的查找文件命令find是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找所有文件, BUT, 因为是要遍历，所以速度上是相对比较慢的。 还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快">
 <meta name="twitter:image" content="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="Sean&#39;s Blog" type="application/atom+xml">
@@ -184,6 +184,7 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>前一篇的查找文件命令<code>find</code>是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找<strong>所有文件</strong>, BUT, 因为是要遍历，所以速度上是相对比较慢的。</p>
 <p>还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快</p>
+<a id="more"></a>
 <h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locate [-i] 文件名</div></pre></td></tr></table></figure>
 <p>可选配置项<code>-i</code>用来忽略大小写</p>
 <p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg" alt="image"></p>
@@ -465,11 +466,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,15 +498,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,7 +510,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
               </li>
              
               <li class="article-tag-list-item">

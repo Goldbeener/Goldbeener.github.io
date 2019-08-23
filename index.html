@@ -295,36 +295,7 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>前一篇的查找文件命令<code>find</code>是直接遍历制定目录下的所有文件来查找目标文件，因此可以查找<strong>所有文件</strong>, BUT, 因为是要遍历，所以速度上是相对比较慢的。</p>
 <p>还有其他的一些文件查找命令，可以满足一些特殊的文件查找场景，并且速度也比较快</p>
-<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">locate [-i] 文件名</div></pre></td></tr></table></figure>
-<p>可选配置项<code>-i</code>用来忽略大小写</p>
-<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG79_1560170275902.jpeg" alt="image"></p>
-<blockquote>
-<p>locate是维护了一个文件资料库，资料库定期更新linux中的文件位置，搜索的时候，直接在资料库中搜索，因此更加快捷</p>
-<p>但是，因为是<strong>定期更新</strong>, 因此新建的文件如果直接使用locate搜索的话，是搜不到的，需要先手动更新一下资料库</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">updatedb  # 手动更新locate的资料库</div></pre></td></tr></table></figure>
-<blockquote>
-<p>locate并不是linux自带的， 需要手动安装，可以使用<code>yum install mlocate</code> 安装， 然后初次使用的时候需要先更新一下文件资料库<code>updatedb</code>, 就可以使用搜索</p>
-</blockquote>
-<h3 id="which"><a href="#which" class="headerlink" title="which"></a>which</h3><p><code>which</code> 命令主要用来搜索<code>命令</code>所在的路径，附带着命令的<strong>别名</strong>信息</p>
-<p>也就是说which的搜索目标，是可执行的文件，就是我们日常理解的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">which rm</div></pre></td></tr></table></figure>
-<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG80_1560170384860.jpeg" alt="image"></p>
-<h3 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h3><p><code>whereis</code>也是用来搜索命令的, 与<code>which</code>不同的是，whereis会显示命令以及命令的帮助文件所在的路径，并不会显示别名信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whereis rm</div></pre></td></tr></table></figure></p>
-<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG82_1560170505615.jpeg" alt="image"></p>
-<blockquote>
-<p>有时候使用whereis会会有两个帮助(man)信息，是因为whereis不仅可以搜索命令还可以搜索配置文件<br>因此可以使用参数， 来标示查看的是哪一种<br>whereis 1 command   表示查看的是命令<br>whereis 5 command   表示查看的是配置文件</p>
-<p>通过<code>which</code> 和 <code>whereis</code> 发现，命令大多数都存储在 <code>/usr/bin</code>目录下, 其实还有一部分是存储在<code>/usr/sbin</code>下的，二者的区别是，前者下的命令是所有用户都可以使用的，后者下的命令是只有管理员可以使用</p>
-</blockquote>
-<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p><code>grep</code>与前面几个命令不同的是，它是用来查找文件内容的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep [-i/-v] keyword filename</div></pre></td></tr></table></figure>
-<p><code>-i</code> 还是用来忽略大小写的<br><code>-v</code> 是用来反向匹配的</p>
-<p>比如，过滤掉文件内容里的注释行，可以使用如下操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">grep -v ^# filename</div></pre></td></tr></table></figure></p>
-<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG83_1560171240430.jpeg" alt="image"></p>
-<p>区分大小写的状况</p>
-<p><img src="https://static.daojia.com/assets/project/tosimple-pic/WechatIMG84_1560171326773.jpeg" alt="image"></p>
-<p>使用<code>^# -v</code> 反向匹配所有不是注释行的信息，发现该文件内容全部是注释 </p>
-
+        
       
 
       
@@ -926,11 +897,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">模块规范</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -958,15 +929,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">charles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -974,7 +941,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Hexo 教程</a>
+                <a href="javascript:void(0)" class="js-tag color3">charles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抓包</a>
               </li>
              
               <li class="article-tag-list-item">
